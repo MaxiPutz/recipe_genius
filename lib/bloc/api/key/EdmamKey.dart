@@ -9,4 +9,9 @@ class APIKey {
     appID = _appID;
     appKey = _appKey;
   }
+
+  Map<String, dynamic> toJson() => {
+        'appID': appID,
+        'appKey': appKey,
+      };
 }

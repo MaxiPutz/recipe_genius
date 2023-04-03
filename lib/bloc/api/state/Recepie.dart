@@ -29,4 +29,9 @@ class StateAPI {
     newApiState.responseMenu = responseMenu;
     return newApiState;
   }
+
+  Map<String, dynamic> toJson() => {
+        'APIKey': recepieKey.toJson(),
+        'ResponseMenu': responseMenu?.toJson(),
+      };
 }

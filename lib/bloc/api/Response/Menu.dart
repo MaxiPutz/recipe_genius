@@ -30,6 +30,10 @@ class ResponseMenu {
   String toString() {
     return hits.map((menu) => menu.toString()).join('\n');
   }
+
+  Map<String, dynamic> toJson() => {
+        'hits': hits.map((menu) => menu.toJson()).toList(),
+      };
 }
 
 class Menu {
@@ -65,6 +69,14 @@ class Menu {
   String toString() {
     return 'Recipe: $label\nImage URL: $url\nCalories: $calories\nIngredients: ${ingredients.map((i) => i.toString()).join(', ')}\n';
   }
+
+  Map<String, dynamic> toJson() => {
+        'label': label,
+        'image': image,
+        'url': url,
+        'ingredients': ingredients.map((i) => i.toJson()).toList(),
+        'calories': calories,
+      };
 }
 
 class Ingredient {
@@ -76,4 +88,8 @@ class Ingredient {
   String toString() {
     return name;
   }
+
+  Map<String, dynamic> toJson() => {
+        'name': name,
+      };
 }

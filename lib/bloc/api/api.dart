@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_genius/bloc/api/Response/Menu.dart';
 import 'package:recipe_genius/bloc/api/key/EdmamKey.dart';
 import 'package:recipe_genius/bloc/api/event/event.dart';
 import 'package:recipe_genius/bloc/api/state/Recepie.dart';
 import 'package:http/http.dart' as http;
+
+// import "dart:io" as io;
 
 Uri menueRequest(String appId, String appKey, String menuName) {
   var url =
@@ -18,8 +22,13 @@ class BlocAPI extends Bloc<EventAPI, StateAPI> {
       var res = await getMenuData(menueRequest(
           state.recepieKey.appID, state.recepieKey.appKey, event.menuName));
 
+      var newState = state.setResponseMenue(res);
       print(res.toString());
-      emit(state.setResponseMenue(res));
+
+      // var file = io.File("./test.json");
+      // file.writeAsStringSync(jsonEncode(newState.toJson()));
+
+      emit(newState);
     }));
   }
 }
