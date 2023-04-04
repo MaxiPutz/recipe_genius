@@ -26,6 +26,14 @@ class ResponseMenu {
     return ResponseMenu(hits: menuList);
   }
 
+  factory ResponseMenu.fromJsonState(Map<String, dynamic> json) {
+    var hitsList = json['hits'] as List;
+
+    List<Menu> menuList = hitsList.map((i) => Menu.fromJsonState(i)).toList();
+
+    return ResponseMenu(hits: menuList);
+  }
+
   @override
   String toString() {
     return hits.map((menu) => menu.toString()).join('\n');
@@ -65,6 +73,23 @@ class Menu {
     );
   }
 
+  factory Menu.fromJsonState(Map<String, dynamic> json) {
+    print("this is a function");
+    var ingredientsList = json['ingredientLines'] as List;
+
+    print(ingredientsList);
+    List<Ingredient> ingredients =
+        ingredientsList.map((i) => Ingredient.fromJsonState(i)).toList();
+
+    return Menu(
+      label: json['label'],
+      image: json['image'],
+      url: json['url'],
+      ingredients: ingredients,
+      calories: json['calories'].toDouble(),
+    );
+  }
+
   @override
   String toString() {
     return 'Recipe: $label\nImage URL: $url\nCalories: $calories\nIngredients: ${ingredients.map((i) => i.toString()).join(', ')}\n';
@@ -74,7 +99,7 @@ class Menu {
         'label': label,
         'image': image,
         'url': url,
-        'ingredients': ingredients.map((i) => i.toJson()).toList(),
+        'ingredientLines': ingredients.map((i) => i.toJson()).toList(),
         'calories': calories,
       };
 }
@@ -83,6 +108,10 @@ class Ingredient {
   String name;
 
   Ingredient({required this.name});
+
+  factory Ingredient.fromJsonState(Map<String, dynamic> json) {
+    return Ingredient(name: json["name"]);
+  }
 
   @override
   String toString() {

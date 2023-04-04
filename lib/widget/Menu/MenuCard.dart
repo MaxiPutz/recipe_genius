@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_genius/bloc/api/Response/Menu.dart';
+import 'package:recipe_genius/view/IngredientView.dart';
 
 class MenuCard extends StatelessWidget {
   final Menu menu;
@@ -12,40 +13,44 @@ class MenuCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          AspectRatio(
-            aspectRatio: 3 / 2,
-            child: ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(8.0)),
-              child: Image.network(
-                menu.image,
-                fit: BoxFit.cover,
+      child: InkWell(
+        onTap: () => Navigator.push(context,
+            MaterialPageRoute(builder: (context) => IngredientView(menu))),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 3 / 2,
+              child: ClipRRect(
+                borderRadius: BorderRadius.vertical(top: Radius.circular(8.0)),
+                child: Image.network(
+                  menu.image,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-          ),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Text(
-                  menu.label,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 16.0,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    menu.label,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16.0,
+                    ),
                   ),
-                ),
-                SizedBox(height: 8.0),
-                Text(
-                  "${menu.calories.toInt()} kcal",
-                  style: TextStyle(fontSize: 14.0),
-                ),
-              ],
+                  SizedBox(height: 8.0),
+                  Text(
+                    "${menu.calories.toInt()} kcal",
+                    style: TextStyle(fontSize: 14.0),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

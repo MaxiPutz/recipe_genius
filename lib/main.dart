@@ -11,7 +11,7 @@ const String imgURL =
 
 void main() {
   Bloc.observer = const AppBlocObserver();
-  print(imgURL);
+  // print(imgURL);
   runApp(const MyApp());
 }
 
@@ -44,27 +44,24 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
   @override
   Widget build(BuildContext context) {
+    context.read<BlocAPI>().add(EventInitTestData());
+
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
         ),
         body: BlocBuilder<BlocAPI, StateAPI>(builder: (context, data) {
-          print("main.dart:\t" + data.toString());
           if (data.responseMenu != null) {
             if (data.responseMenu?.hits != null) {
               data.responseMenu?.hits.forEach((element) {
                 var temp = element.image;
-                print("main.dart:\t" + temp);
               });
               return MenuView(data.responseMenu!.hits);
             }
           }
 
-          print("main.dart:\t" + imgURL);
           return Container();
         }),
         floatingActionButton: FloatingActionButton(
