@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_genius/bloc/api/Response/Menu.dart';
+import 'package:recipe_genius/bloc/RecepieAPI/Response/Menu.dart';
 import 'package:recipe_genius/view/IngredientView.dart';
 
 class MenuCard extends StatelessWidget {

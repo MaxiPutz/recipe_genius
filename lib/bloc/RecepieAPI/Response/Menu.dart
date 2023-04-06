@@ -106,11 +106,17 @@ class Menu {
 
 class Ingredient {
   String name;
+  String weight = "0";
 
   Ingredient({required this.name});
 
   factory Ingredient.fromJsonState(Map<String, dynamic> json) {
-    return Ingredient(name: json["name"]);
+    var tmp = Ingredient(name: json["name"]);
+    if (json.containsKey("weight")) {
+      tmp.weight = json["weight"];
+    }
+
+    return tmp;
   }
 
   @override
@@ -118,7 +124,5 @@ class Ingredient {
     return name;
   }
 
-  Map<String, dynamic> toJson() => {
-        'name': name,
-      };
+  Map<String, dynamic> toJson() => {'name': name, 'weight': weight};
 }

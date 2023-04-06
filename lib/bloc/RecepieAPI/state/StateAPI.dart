@@ -1,5 +1,5 @@
-import 'package:recipe_genius/bloc/api/Response/Menu.dart';
-import 'package:recipe_genius/bloc/api/key/EdmamKey.dart';
+import 'package:recipe_genius/bloc/RecepieAPI/Response/Menu.dart';
+import 'package:recipe_genius/bloc/RecepieAPI/key/EdmamKey.dart';
 
 class StateAPI {
   late APIKey recepieKey;

@@ -1,10 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:recipe_genius/bloc/api/Response/Menu.dart';
-import 'package:recipe_genius/bloc/api/key/EdmamKey.dart';
-import 'package:recipe_genius/bloc/api/event/event.dart';
-import 'package:recipe_genius/bloc/api/state/Recepie.dart';
+import 'package:recipe_genius/bloc/RecepieAPI/Response/Menu.dart';
+import 'package:recipe_genius/bloc/RecepieAPI/key/EdmamKey.dart';
+import 'package:recipe_genius/bloc/RecepieAPI/event/event.dart';
+import 'package:recipe_genius/bloc/RecepieAPI/state/StateAPI.dart';
 import 'package:http/http.dart' as http;
 import "dart:io" as io;
 
