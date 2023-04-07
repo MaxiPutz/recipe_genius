@@ -4,7 +4,7 @@ import 'package:recipe_genius/bloc/RecepieAPI/Response/Menu.dart';
 abstract class EventMenuPlan {}
 
 class EventMenuPlanAddIngredient extends EventMenuPlan {
-  Ingredient ingredient;
+  IngredientLine ingredient;
   EventMenuPlanAddIngredient(this.ingredient);
 }
 

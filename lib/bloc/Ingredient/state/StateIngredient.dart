@@ -22,4 +22,26 @@ class StateIngredientAdd {
 
     return tmp;
   }
+
+  StateIngredientAdd initIngredients(List<Ingredient> ingredients) {
+    var temp = newState();
+
+    for (var i = 0; i < ingredients.length; i++) {
+      final ele = ingredients[i];
+      temp.ingredients[i.toString()] = ele;
+    }
+    return temp;
+  }
+
+  StateIngredientAdd scaleQuantity(double val) {
+    print(val);
+    var tmp = newState();
+    tmp.ingredients = ingredients;
+
+    ingredients.forEach((key, value) {
+      tmp.ingredients[key]!.weight = value.weight * val;
+    });
+
+    return tmp;
+  }
 }

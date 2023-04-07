@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<ResponseMenu> getMenuData(Uri uri) async {
@@ -45,76 +46,101 @@ class ResponseMenu {
 }
 
 class Menu {
+  // String foodId; // in response  foodId: food_aq6acefaz2zqp1anqb7iiatc27q6,
+  double servings;
   String label;
   String image;
   String url;
+  List<IngredientLine> ingredientLine;
   List<Ingredient> ingredients;
   double calories;
 
-  Menu({
-    required this.label,
-    required this.image,
-    required this.url,
-    required this.ingredients,
-    required this.calories,
-  });
+  Menu(
+      {required this.label,
+      required this.image,
+      required this.url,
+      required this.ingredientLine,
+      required this.calories,
+      required this.servings,
+      required this.ingredients});
 
   factory Menu.fromJson(Map<String, dynamic> json) {
-    var ingredientsList = json['ingredientLines'] as List;
-    List<Ingredient> ingredients =
-        ingredientsList.map((i) => Ingredient(name: i)).toList();
+    var ingredientsLineList = json['ingredientLines'] as List;
+    var ingredientsList = json["ingredients"] as List;
+
+    List<IngredientLine> ingredientLine =
+        ingredientsLineList.map((i) => IngredientLine(name: i)).toList();
+
+    print("");
+    print("");
+    print("");
+    print("");
+    print("");
+
+    print(ingredientsList);
+    print(json["food"]);
+    List<Ingredient> ingredients = ingredientsList
+        .map((ele) => Ingredient(
+            food: ele["food"] ?? (ele["name"] ?? "not found"),
+            weight: (ele["weight"] ?? ele["quantity"] ?? 0),
+            imageUrl: ele["image"]))
+        .toList();
 
     return Menu(
-      label: json['label'],
-      image: json['image'],
-      url: json['url'],
-      ingredients: ingredients,
-      calories: json['calories'].toDouble(),
-    );
+        label: json['label'],
+        image: json['image'],
+        url: json['url'],
+        ingredientLine: ingredientLine,
+        calories: json['calories'],
+        servings: json['yield'],
+        ingredients: ingredients);
   }
 
   factory Menu.fromJsonState(Map<String, dynamic> json) {
     print("this is a function");
-    var ingredientsList = json['ingredientLines'] as List;
+    var ingredientLineList = json['ingredientLines'] as List;
+    var ingredientList = json["ingredients"] as List;
 
-    print(ingredientsList);
+    print(ingredientLineList);
+    List<IngredientLine> ingredientLine =
+        ingredientLineList.map((i) => IngredientLine.fromJsonState(i)).toList();
+
     List<Ingredient> ingredients =
-        ingredientsList.map((i) => Ingredient.fromJsonState(i)).toList();
+        ingredientList.map((i) => Ingredient.fromJsonState(i)).toList();
 
     return Menu(
-      label: json['label'],
-      image: json['image'],
-      url: json['url'],
-      ingredients: ingredients,
-      calories: json['calories'].toDouble(),
-    );
+        label: json['label'],
+        image: json['image'],
+        url: json['url'],
+        ingredientLine: ingredientLine,
+        ingredients: ingredients,
+        calories: json['calories'],
+        servings: json["yield"]);
   }
 
   @override
   String toString() {
-    return 'Recipe: $label\nImage URL: $url\nCalories: $calories\nIngredients: ${ingredients.map((i) => i.toString()).join(', ')}\n';
+    return 'Recipe: $label\nImage URL: $url\nCalories: $calories\nIngredients: ${ingredientLine.map((i) => i.toString()).join(', ')}\n';
   }
 
   Map<String, dynamic> toJson() => {
         'label': label,
         'image': image,
         'url': url,
-        'ingredientLines': ingredients.map((i) => i.toJson()).toList(),
+        'ingredientLines': ingredientLine.map((i) => i.toJson()).toList(),
+        "ingredients": ingredients.map((e) => e.toJson()).toList(),
         'calories': calories,
+        'yield': servings
       };
 }
 
-class Ingredient {
+class IngredientLine {
   String name;
-  String weight = "0";
 
-  Ingredient({required this.name});
+  IngredientLine({required this.name});
 
-  factory Ingredient.fromJsonState(Map<String, dynamic> json) {
-    var tmp = Ingredient(name: json["name"]);
-    if (json.containsKey("weight")) {
-      tmp.weight = json["weight"];
-    }
+  factory IngredientLine.fromJsonState(Map<String, dynamic> json) {
+    var tmp = IngredientLine(name: json["name"]);
 
     return tmp;
   }
@@ -124,5 +150,35 @@ class Ingredient {
     return name;
   }
 
-  Map<String, dynamic> toJson() => {'name': name, 'weight': weight};
+  Map<String, dynamic> toJson() => {'name': name};
+}
+
+class Ingredient {
+  String food;
+  double weight;
+  String imageUrl;
+  //String measure // in response measure: gram,
+
+  Ingredient(
+      {required this.food, required this.weight, required this.imageUrl});
+
+  Ingredient copy() {
+    return Ingredient(food: food, imageUrl: imageUrl, weight: weight);
+  }
+
+  factory Ingredient.fromJson(Map<String, dynamic> json) {
+    return Ingredient(
+        food: json["food"], weight: json["weight"], imageUrl: json["image"]);
+  }
+
+  factory Ingredient.fromJsonState(Map<String, dynamic> json) {
+    return Ingredient(
+        food: json["food"], weight: json["weight"], imageUrl: json["image"]);
+  }
+
+  Map<String, dynamic> toJson() => {
+        "weight": weight,
+        "food": food,
+        "image": imageUrl,
+      };
 }

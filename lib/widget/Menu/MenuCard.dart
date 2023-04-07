@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_genius/bloc/Ingredient/Ingredient.dart';
+import 'package:recipe_genius/bloc/Ingredient/event/EventIngredient.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/Response/Menu.dart';
 import 'package:recipe_genius/view/IngredientView.dart';
 
@@ -7,6 +10,12 @@ class MenuCard extends StatelessWidget {
 
   MenuCard({required this.menu});
 
+  void cardClick(BuildContext context) {
+    context.read<BlocIngredient>().add(EventIngredientNew(menu.ingredients));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => IngredientView(menu)));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -14,8 +23,7 @@ class MenuCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(8.0),
       ),
       child: InkWell(
-        onTap: () => Navigator.push(context,
-            MaterialPageRoute(builder: (context) => IngredientView(menu))),
+        onTap: () => cardClick(context),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
