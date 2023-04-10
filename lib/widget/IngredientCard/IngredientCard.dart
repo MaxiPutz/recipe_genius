@@ -50,10 +50,8 @@ class _IngredientCardState extends State<IngredientCard> {
       weight = double.tryParse(weightTextController.value.text) ?? 0;
       _buildContext.read<BlocIngredient>().add(EventIngredientEdit(
           widget.id.toString(),
-          Ingredient(
-              food: name,
-              imageUrl: widget.ingredient.imageUrl,
-              weight: weight)));
+          Ingredient.setInitWeight(name, weight, widget.ingredient.imageUrl,
+              widget.ingredient.measure, widget.ingredient.getInitWeight())));
     });
 
     super.initState();
@@ -127,10 +125,11 @@ class _IngredientCardState extends State<IngredientCard> {
                           controller: weightTextController,
                           decoration: const InputDecoration(
                               border: OutlineInputBorder(),
-                              labelText: "Food Weight in gramm"),
+                              labelText: "Food Weight"),
                         ),
                       ),
                     ),
+                    Text("gramm"), //widget.ingredient.measure#
                   ],
                 ),
                 content: ShoppingProductsDart(name),

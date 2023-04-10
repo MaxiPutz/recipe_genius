@@ -13,6 +13,7 @@ class StateMenuPlan {
   StateMenuPlan addMenuPlan(String key, MenuPlan menuPlan) {
     var newState = copy();
     newState.menuplans[key] = menuPlan;
+
     return newState;
   }
 }

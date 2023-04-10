@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:recipe_genius/bloc/BillaAPI/BlocBillaAPI.dart';
+import 'package:recipe_genius/bloc/BillaAPI/event/EventBillaAPI.dart';
 import 'package:recipe_genius/bloc/Ingredient/Ingredient.dart';
 import 'package:recipe_genius/bloc/MenuPlan/MenuPlan.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/RecepieAPI.dart';
@@ -30,7 +32,8 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<BlocAPI>(create: (context) => BlocAPI()),
         BlocProvider<BlocMenuPlan>(create: (context) => BlocMenuPlan()),
-        BlocProvider<BlocIngredient>(create: (context) => BlocIngredient())
+        BlocProvider<BlocIngredient>(create: (context) => BlocIngredient()),
+        BlocProvider<BlocBillaAPI>(create: (context) => BlocBillaAPI())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
@@ -62,8 +65,15 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(widget.title),
           actions: [
             IconButton(
-                onPressed: () => Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => ShopingCardView())),
+                onPressed: () {
+                  context
+                      .read<BlocBillaAPI>()
+                      .add(EventBillaAPISearch("spinach", context));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ShopingCardView()));
+                },
                 icon: Icon(Icons.shopping_cart_checkout)),
           ],
         ),

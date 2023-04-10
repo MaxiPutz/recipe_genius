@@ -81,6 +81,7 @@ class Menu {
     print(json["food"]);
     List<Ingredient> ingredients = ingredientsList
         .map((ele) => Ingredient(
+            measure: ele["measure"] ?? "Null",
             food: ele["food"] ?? (ele["name"] ?? "not found"),
             weight: (ele["weight"] ?? ele["quantity"] ?? 0),
             imageUrl: ele["image"]))
@@ -157,28 +158,48 @@ class Ingredient {
   String food;
   double weight;
   String imageUrl;
-  //String measure // in response measure: gram,
+  String measure; // in response measure: gram,
+  late double _initWeight;
 
+  double getInitWeight() => this._initWeight;
   Ingredient(
-      {required this.food, required this.weight, required this.imageUrl});
+      {required this.food,
+      required this.weight,
+      required this.imageUrl,
+      required this.measure}) {
+    _initWeight = this.weight;
+  }
+
+  factory Ingredient.setInitWeight(String food, double weight, String imageUrl,
+      String measure, double initWeight) {
+    var newIngredient = Ingredient(
+        food: food, weight: weight, imageUrl: imageUrl, measure: measure);
+
+    newIngredient._initWeight = initWeight;
+    return newIngredient;
+  }
 
   Ingredient copy() {
-    return Ingredient(food: food, imageUrl: imageUrl, weight: weight);
+    return Ingredient(
+        food: food, imageUrl: imageUrl, weight: weight, measure: measure);
   }
 
   factory Ingredient.fromJson(Map<String, dynamic> json) {
     return Ingredient(
-        food: json["food"], weight: json["weight"], imageUrl: json["image"]);
+        food: json["food"],
+        weight: json["weight"],
+        imageUrl: json["image"],
+        measure: json["measure"]);
   }
 
   factory Ingredient.fromJsonState(Map<String, dynamic> json) {
     return Ingredient(
-        food: json["food"], weight: json["weight"], imageUrl: json["image"]);
+        food: json["food"],
+        weight: json["weight"],
+        imageUrl: json["image"],
+        measure: json["measure"]);
   }
 
-  Map<String, dynamic> toJson() => {
-        "weight": weight,
-        "food": food,
-        "image": imageUrl,
-      };
+  Map<String, dynamic> toJson() =>
+      {"weight": weight, "food": food, "image": imageUrl, "measure": measure};
 }

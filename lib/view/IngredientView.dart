@@ -26,6 +26,8 @@ class _IngredientViewState extends State<IngredientView> {
   @override
   void initState() {
     selectedServings = widget.menu.servings;
+    ingredients = widget.menu.ingredients.asMap().map<String, Ingredient>(
+        (key, value) => MapEntry(key.toString(), value));
     super.initState();
   }
 
@@ -122,8 +124,12 @@ class _IngredientViewState extends State<IngredientView> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-          onPressed: () => context.read<BlocMenuPlan>().add(EventMenuPlanAdd(
-              "key", MenuPlan(widget.menu, ingredients.values.toList()))),
+          onPressed: () {
+            print("ingrediensts bevor bloc");
+            print(ingredients.values.toList().length);
+            context.read<BlocMenuPlan>().add(EventMenuPlanAdd(
+                "key007", MenuPlan(widget.menu, ingredients.values.toList())));
+          },
           child: const Icon(Icons.add)),
     );
   }

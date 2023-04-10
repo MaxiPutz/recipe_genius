@@ -39,7 +39,7 @@ class StateIngredientAdd {
     tmp.ingredients = ingredients;
 
     ingredients.forEach((key, value) {
-      tmp.ingredients[key]!.weight = value.weight * val;
+      tmp.ingredients[key]!.weight = value.getInitWeight() * val;
     });
 
     return tmp;
