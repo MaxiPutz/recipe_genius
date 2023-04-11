@@ -47,11 +47,17 @@ class _IngredientCardState extends State<IngredientCard> {
     });
 
     weightTextController.addListener(() {
+      var _ingredient = Ingredient(
+          food: name,
+          weight: weight,
+          imageUrl: widget.ingredient.imageUrl,
+          measure: widget.ingredient.measure,
+          foodId: widget.ingredient.foodId);
       weight = double.tryParse(weightTextController.value.text) ?? 0;
       _buildContext.read<BlocIngredient>().add(EventIngredientEdit(
           widget.id.toString(),
-          Ingredient.setInitWeight(name, weight, widget.ingredient.imageUrl,
-              widget.ingredient.measure, widget.ingredient.getInitWeight())));
+          Ingredient.setInitWeight(
+              _ingredient, widget.ingredient.getInitWeight())));
     });
 
     super.initState();

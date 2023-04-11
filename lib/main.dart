@@ -60,37 +60,40 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     context.read<BlocAPI>().add(EventInitTestData());
 
-    return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  context
-                      .read<BlocBillaAPI>()
-                      .add(EventBillaAPISearch("spinach", context));
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ShopingCardView()));
-                },
-                icon: Icon(Icons.shopping_cart_checkout)),
-          ],
-        ),
-        body: BlocBuilder<BlocAPI, StateAPI>(builder: (context, data) {
-          if (data.responseMenu != null) {
-            if (data.responseMenu?.hits != null) {
-              data.responseMenu?.hits.forEach((element) {
-                var temp = element.image;
-              });
-              return MenuView(data.responseMenu!.hits);
-            }
-          }
+    void toolBarAction(BuildContext context) {
+      context.read<BlocBillaAPI>().add(EventBillaAPISearch("spinach", context));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => ShopingCardView()));
+    }
 
-          return Container();
-        }),
-        floatingActionButton: FloatingActionButton(
-            onPressed: () =>
-                context.read<BlocAPI>().add(EventFindRecepies("spinach"))));
+    void floatingActionButton(BuildContext context) {
+      context.read<BlocAPI>().add(EventFindRecepies("spinach"));
+    }
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        actions: [
+          IconButton(
+              onPressed: () => toolBarAction(context),
+              icon: Icon(Icons.shopping_cart_checkout)),
+        ],
+      ),
+      body: BlocBuilder<BlocAPI, StateAPI>(builder: (context, data) {
+        if (data.responseMenu != null) {
+          if (data.responseMenu?.hits != null) {
+            data.responseMenu?.hits.forEach((element) {
+              var temp = element.image;
+            });
+            return MenuView(data.responseMenu!.hits);
+          }
+        }
+
+        return Container();
+      }),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => floatingActionButton(context),
+      ),
+    );
   }
 }
