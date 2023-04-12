@@ -13,3 +13,8 @@ class EventMenuPlanAdd extends EventMenuPlan {
   String key;
   EventMenuPlanAdd(this.key, this.menuPlan);
 }
+
+class EventMenuPlanInit extends EventMenuPlan {
+  StateMenuPlan stateMenuPlan;
+  EventMenuPlanInit(this.stateMenuPlan);
+}

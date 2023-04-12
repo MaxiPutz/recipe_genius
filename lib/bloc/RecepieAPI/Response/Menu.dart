@@ -7,7 +7,6 @@ Future<ResponseMenu> getMenuData(Uri uri) async {
 
   if (response.statusCode == 200) {
     var data = jsonDecode(response.body);
-    print(data);
     return ResponseMenu.fromJson(data);
   } else {
     throw Exception("Error: Could not retrieve recipe data.");
@@ -99,11 +98,9 @@ class Menu {
   }
 
   factory Menu.fromJsonState(Map<String, dynamic> json) {
-    print("this is a function");
     var ingredientLineList = json['ingredientLines'] as List;
     var ingredientList = json["ingredients"] as List;
 
-    print(ingredientLineList);
     List<IngredientLine> ingredientLine =
         ingredientLineList.map((i) => IngredientLine.fromJsonState(i)).toList();
 

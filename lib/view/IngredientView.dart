@@ -23,6 +23,14 @@ class _IngredientViewState extends State<IngredientView> {
 
   late double selectedServings;
 
+  void handleAddMenuPlanAction() {
+    print("ingrediensts bevor bloc");
+    print(ingredients.values.toList().length);
+
+    context.read<BlocMenuPlan>().add(EventMenuPlanAdd(
+        "key007", MenuPlan(widget.menu, ingredients.values.toList())));
+  }
+
   @override
   void initState() {
     selectedServings = widget.menu.servings;
@@ -125,10 +133,7 @@ class _IngredientViewState extends State<IngredientView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            print("ingrediensts bevor bloc");
-            print(ingredients.values.toList().length);
-            context.read<BlocMenuPlan>().add(EventMenuPlanAdd(
-                "key007", MenuPlan(widget.menu, ingredients.values.toList())));
+            handleAddMenuPlanAction();
           },
           child: const Icon(Icons.add)),
     );

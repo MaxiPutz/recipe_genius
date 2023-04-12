@@ -1,0 +1,251 @@
+{
+    "menuplans": {
+        "key007": {
+            "ingredients": [
+                {
+                    "weight": 4.5,
+                    "food": "olive oil",
+                    "image": "https://www.edamam.com/food-img/4d6/4d651eaa8a353647746290c7a9b29d84.jpg",
+                    "measure": "teaspoon",
+                    "foodId": "food_b1d1icuad3iktrbqby0hiagafaz7"
+                },
+                {
+                    "weight": 125.0,
+                    "food": "onion",
+                    "image": "https://www.edamam.com/food-img/205/205e6bf2399b85d34741892ef91cc603.jpg",
+                    "measure": "<unit>",
+                    "foodId": "food_bmrvi4ob4binw9a5m7l07amlfcoy"
+                },
+                {
+                    "weight": 3.0,
+                    "food": "garlic",
+                    "image": "https://www.edamam.com/food-img/6ee/6ee142951f48aaf94f4312409f8d133d.jpg",
+                    "measure": "clove",
+                    "foodId": "food_avtcmx6bgjv1jvay6s6stan8dnyp"
+                },
+                {
+                    "weight": 119.0,
+                    "food": "red bell pepper",
+                    "image": "https://www.edamam.com/food-img/4dc/4dc48b1a506d334b4ab6671b9d56a18f.jpeg",
+                    "measure": "<unit>",
+                    "foodId": "food_a8g63g7ak6bnmvbu7agxibp4a0dy"
+                },
+                {
+                    "weight": 425.25,
+                    "food": "can chickpea",
+                    "image": "https://www.edamam.com/food-img/603/603965a58e6a5d127a522ffb44289d24.jpg",
+                    "measure": "<unit>",
+                    "foodId": "food_a63lcoybzox4krbbrj8eba9g8cz5"
+                },
+                {
+                    "weight": 200.0,
+                    "food": "spinach",
+                    "image": "https://www.edamam.com/food-img/e6e/e6e4be375c4554ce01c8ea75232efaa6.jpg",
+                    "measure": "gram",
+                    "foodId": "food_aoceuc6bshdej1bbsdammbnj6l6o"
+                },
+                {
+                    "weight": 800.0,
+                    "food": "can tomato",
+                    "image": "https://www.edamam.com/food-img/d4e/d4e8110d51db4311bc894167a8f77816.jpg",
+                    "measure": "gram",
+                    "foodId": "food_bnmkkwqa9h2p87bz171eoby0bsey"
+                },
+                {
+                    "weight": 1.05,
+                    "food": "cumin",
+                    "image": "https://www.edamam.com/food-img/07e/07e2a4eb77ce46591033846504817d35.jpg",
+                    "measure": "teaspoon",
+                    "foodId": "food_a8jjbx4biqndasapojdb5by3e92e"
+                },
+                {
+                    "weight": 1.15,
+                    "food": "paprika",
+                    "image": "https://www.edamam.com/food-img/474/474d63763b9d8b9da98c5f43a114648c.jpg",
+                    "measure": "teaspoon",
+                    "foodId": "food_a9dpcnjb883g67b3lq82ca0421ql"
+                },
+                {
+                    "weight": 1.15,
+                    "food": "paprika",
+                    "image": "https://www.edamam.com/food-img/474/474d63763b9d8b9da98c5f43a114648c.jpg",
+                    "measure": "teaspoon",
+                    "foodId": "food_a9dpcnjb883g67b3lq82ca0421ql"
+                },
+                {
+                    "weight": 55.563,
+                    "food": "chili",
+                    "image": "https://www.edamam.com/food-img/469/469213672957a242638e20c27e3e8acd.jpeg",
+                    "measure": "Null",
+                    "foodId": "food_a6g98mqatzj7vca6ms3bnbzqxf3s"
+                },
+                {
+                    "weight": 11.1126,
+                    "food": "salt",
+                    "image": "https://www.edamam.com/food-img/694/6943ea510918c6025795e8dc6e6eaaeb.jpg",
+                    "measure": "Null",
+                    "foodId": "food_btxz81db72hwbra2pncvebzzzum9"
+                },
+                {
+                    "weight": 5.5563,
+                    "food": "pepper",
+                    "image": "https://www.edamam.com/food-img/c6e/c6e5c3bd8d3bc15175d9766971a4d1b2.jpg",
+                    "measure": "Null",
+                    "foodId": "food_b6ywzluaaxv02wad7s1r9ag4py89"
+                },
+                {
+                    "weight": 172.0,
+                    "food": "egg",
+                    "image": "https://www.edamam.com/food-img/a7e/a7ec7c337cb47c6550b3b118e357f077.jpg",
+                    "measure": "<unit>",
+                    "foodId": "food_bhpradua77pk16aipcvzeayg732r"
+                }
+            ],
+            "menu": {
+                "label": "Shakshuka mit Kichererbsen und Spinat",
+                "image": "https://edamam-product-images.s3.amazonaws.com/web-img/8ba/8bafe551984636bfa38474d726481846.jpg?X-Amz-Security-Token=IQoJb3JpZ2luX2VjENr%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJIMEYCIQCmIje9rVy5rG3mm1P%2FieJZOoq8RPRahfU46oJUVKPoKAIhAKPGu0uA7JN3YwGejwlUSk84up4A%2FxCevl2wLUUBSZ66KsIFCML%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEQABoMMTg3MDE3MTUwOTg2IgxdwicBYRYaOVio9hYqlgURCK5AOadWcmJCUPes4Nve2ziBD1q76HYB4T8v%2BloYuQNGD4ADp2t%2FpGbJe3rhCJVOe4NqavLXOHrZm%2BhldXDJwcCF6HcwcwqZ8OTIL48mOIFDgnAZELQC8Y7BzcfAptVg6VpIZk2IwqLCiAQeZjDy6vy%2BIUCv5NAlLcYiTz5BQLwbo4%2FK02%2BUA4E%2BkKWF6YTypP7ft9AI2G7LL%2F%2FVnjw55mpp8A%2FJzEREYtOz%2BAXAqmgee51IqouX3Ad5cJzHJh26J3RXdlsvgfaVZ7Ax7mHF3YHZvmNkUaXkhvA9ypIZiadpx3TBr1vrYKt3VMFNlTVrPm4nCBfryyPA%2FSCl3%2F8H%2B4icKZs5FJwbsG3xX2LDyJoYnNGbKqlrGqu0mbzh1%2BxrMFVFcPIrzi0%2BUjycu6RhdfroiB6Xs2Mfjm7t8TVM04Tq5E9hgJlZ0lQTdaICiStBTSPcHUXRjrZOP7q0Vnb1G8JJOplDpHmhL94tX22s9AP7cgns%2F3sCsO4lzhCjTgvTEcywZeoLnWrbA6%2FyW1VRSOB%2Bs%2ByeV99xLZodI8COta49sVIIP%2FufhjIOYvFAT80bcZWNN29PmeMZO0TXF9193jgMSCDyeM7hi4AKzcFfAhug%2Fs7TQvKkbpAJXQRnFwumYDJvsQAEvgcr6AuaAy4vNy2AbMv0Bn7G91wIVDahM%2BmvjPVswEtdjzUIf9IqQ%2FTNk6uANKC567YBEwInZFf5mPAFgofVsuF3tfqXpKNLd4Yong%2FQo9Bxm2Wlef1Jeke2WS%2B2mGwSIGe%2FQSMkh81UKHAl5LXWHr5SZevLWcDNZya0QLYXQ6rmpojgmgiVqmpv0h%2FlcPr9YtK23q9tFcfsNJvh13BAfP%2FBbka7TkFCbu%2FNvp%2BRpTC40NuhBjqwAfGp6qTYNYqAlQNhlTGK92ZBVQRedUfk6JnTstCrLlLnsGpnr1LCmixe66pTD88kBO9dPmPpEhVLQ3K4Ppif9Ze6CCGxRT92zehKOD07vubEQ6gM%2Bwej6po463uIBOkfA7wJrT7QfIiYK4Zef8tTdZsJZawHNH4vI16Xvh8YAvSgFTAlHRh8qbl5r%2FlvZ0K%2Fkx4yWH9CDtJGsMYQaDWC6RO4J0brH3ZdM0dEw4hmY2zN&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230412T173152Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Credential=ASIASXCYXIIFFHWZ7Z7S%2F20230412%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=250f3a52d49bbb2a8e22ec00043c0c713459434cb1b040a0726bb22de3beaafe",
+                "url": "http://einepriselecker.de/shakshuka-mit-kichererbsen-und-spinat/",
+                "ingredientLines": [
+                    {
+                        "name": "* 1 tsp olive oil"
+                    },
+                    {
+                        "name": "* 1 onion, diced"
+                    },
+                    {
+                        "name": "* 1 garlic clove, minced"
+                    },
+                    {
+                        "name": "* 1 red bell pepper, ca 300g, diced"
+                    },
+                    {
+                        "name": "* 1 can chickpea, ca 220g drained"
+                    },
+                    {
+                        "name": "* 200g spinach, frozen, defrostet"
+                    },
+                    {
+                        "name": "* 2 can tomato, each 400g"
+                    },
+                    {
+                        "name": "* 1/2 tsp cumin"
+                    },
+                    {
+                        "name": "* 1/2 tsp paprika powder, sweet"
+                    },
+                    {
+                        "name": "* 1/2 tsp paprika powder, hot"
+                    },
+                    {
+                        "name": "* chili, salt and pepper to taste"
+                    },
+                    {
+                        "name": "* 4 egg (use more if wanted, but calculate them extra)"
+                    }
+                ],
+                "ingredients": [
+                    {
+                        "weight": 4.5,
+                        "food": "olive oil",
+                        "image": "https://www.edamam.com/food-img/4d6/4d651eaa8a353647746290c7a9b29d84.jpg",
+                        "measure": "teaspoon",
+                        "foodId": "food_b1d1icuad3iktrbqby0hiagafaz7"
+                    },
+                    {
+                        "weight": 125.0,
+                        "food": "onion",
+                        "image": "https://www.edamam.com/food-img/205/205e6bf2399b85d34741892ef91cc603.jpg",
+                        "measure": "<unit>",
+                        "foodId": "food_bmrvi4ob4binw9a5m7l07amlfcoy"
+                    },
+                    {
+                        "weight": 3.0,
+                        "food": "garlic",
+                        "image": "https://www.edamam.com/food-img/6ee/6ee142951f48aaf94f4312409f8d133d.jpg",
+                        "measure": "clove",
+                        "foodId": "food_avtcmx6bgjv1jvay6s6stan8dnyp"
+                    },
+                    {
+                        "weight": 119.0,
+                        "food": "red bell pepper",
+                        "image": "https://www.edamam.com/food-img/4dc/4dc48b1a506d334b4ab6671b9d56a18f.jpeg",
+                        "measure": "<unit>",
+                        "foodId": "food_a8g63g7ak6bnmvbu7agxibp4a0dy"
+                    },
+                    {
+                        "weight": 425.25,
+                        "food": "can chickpea",
+                        "image": "https://www.edamam.com/food-img/603/603965a58e6a5d127a522ffb44289d24.jpg",
+                        "measure": "<unit>",
+                        "foodId": "food_a63lcoybzox4krbbrj8eba9g8cz5"
+                    },
+                    {
+                        "weight": 200.0,
+                        "food": "spinach",
+                        "image": "https://www.edamam.com/food-img/e6e/e6e4be375c4554ce01c8ea75232efaa6.jpg",
+                        "measure": "gram",
+                        "foodId": "food_aoceuc6bshdej1bbsdammbnj6l6o"
+                    },
+                    {
+                        "weight": 800.0,
+                        "food": "can tomato",
+                        "image": "https://www.edamam.com/food-img/d4e/d4e8110d51db4311bc894167a8f77816.jpg",
+                        "measure": "gram",
+                        "foodId": "food_bnmkkwqa9h2p87bz171eoby0bsey"
+                    },
+                    {
+                        "weight": 1.05,
+                        "food": "cumin",
+                        "image": "https://www.edamam.com/food-img/07e/07e2a4eb77ce46591033846504817d35.jpg",
+                        "measure": "teaspoon",
+                        "foodId": "food_a8jjbx4biqndasapojdb5by3e92e"
+                    },
+                    {
+                        "weight": 1.15,
+                        "food": "paprika",
+                        "image": "https://www.edamam.com/food-img/474/474d63763b9d8b9da98c5f43a114648c.jpg",
+                        "measure": "teaspoon",
+                        "foodId": "food_a9dpcnjb883g67b3lq82ca0421ql"
+                    },
+                    {
+                        "weight": 1.15,
+                        "food": "paprika",
+                        "image": "https://www.edamam.com/food-img/474/474d63763b9d8b9da98c5f43a114648c.jpg",
+                        "measure": "teaspoon",
+                        "foodId": "food_a9dpcnjb883g67b3lq82ca0421ql"
+                    },
+                    {
+                        "weight": 55.563,
+                        "food": "chili",
+                        "image": "https://www.edamam.com/food-img/469/469213672957a242638e20c27e3e8acd.jpeg",
+                        "measure": "Null",
+                        "foodId": "food_a6g98mqatzj7vca6ms3bnbzqxf3s"
+                    },
+                    {
+                        "weight": 11.1126,
+                        "food": "salt",
+                        "image": "https://www.edamam.com/food-img/694/6943ea510918c6025795e8dc6e6eaaeb.jpg",
+                        "measure": "Null",
+                        "foodId": "food_btxz81db72hwbra2pncvebzzzum9"
+                    },
+                    {
+                        "weight": 5.5563,
+                        "food": "pepper",
+                        "image": "https://www.edamam.com/food-img/c6e/c6e5c3bd8d3bc15175d9766971a4d1b2.jpg",
+                        "measure": "Null",
+                        "foodId": "food_b6ywzluaaxv02wad7s1r9ag4py89"
+                    },
+                    {
+                        "weight": 172.0,
+                        "food": "egg",
+                        "image": "https://www.edamam.com/food-img/a7e/a7ec7c337cb47c6550b3b118e357f077.jpg",
+                        "measure": "<unit>",
+                        "foodId": "food_bhpradua77pk16aipcvzeayg732r"
+                    }
+                ],
+                "calories": 1188.792513,
+                "yield": 6.0
+            }
+        }
+    }
+}

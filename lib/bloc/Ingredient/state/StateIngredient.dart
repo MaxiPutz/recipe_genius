@@ -34,7 +34,6 @@ class StateIngredientAdd {
   }
 
   StateIngredientAdd scaleQuantity(double val) {
-    print(val);
     var tmp = newState();
     tmp.ingredients = ingredients;
 

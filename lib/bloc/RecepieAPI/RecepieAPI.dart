@@ -22,10 +22,12 @@ class BlocAPI extends Bloc<EventAPI, StateAPI> {
           state.recepieKey.appID, state.recepieKey.appKey, event.menuName));
 
       var newState = state.setResponseMenue(res);
-      print(res.toString());
 
       var file = io.File("./test.json");
-      file.writeAsStringSync(jsonEncode(newState.toJson()));
+
+      var json = jsonEncode(newState.toJson());
+      var encoder = const JsonEncoder.withIndent("    ");
+      file.writeAsStringSync(encoder.convert(newState.toJson()));
 
       emit(newState);
     }));
@@ -33,9 +35,8 @@ class BlocAPI extends Bloc<EventAPI, StateAPI> {
     on<EventInitTestData>((event, emit) {
       var jsonFile = io.File("./test.json");
       var jsonStr = jsonFile.readAsStringSync();
-      var json = jsonDecode(jsonStr);
 
-      print(json["ResponseMenu"]["hits"][1]["ingredientLines"]);
+      var json = jsonDecode(jsonStr);
 
       var resMenue = ResponseMenu.fromJsonState(json["ResponseMenu"]);
       // print("/bloc/api.dart:\t" + resMenue.toString());
