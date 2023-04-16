@@ -10,6 +10,7 @@ import 'package:recipe_genius/bloc/MenuPlan/state/StateMenuPlan.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/RecepieAPI.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/event/event.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/state/StateAPI.dart';
+import 'package:recipe_genius/platform/platform.dart';
 import 'package:recipe_genius/view/MenuView.dart';
 import 'package:recipe_genius/view/ShopingCardView.dart';
 import 'dart:io' as io;
@@ -38,10 +39,11 @@ class _RecepieViewState extends State<RecepieView> {
   @override
   void initState() {
     context.read<BlocAPI>().add(EventInitTestData());
-    var file = io.File("./MenuPlan.json");
-    var json = file.readAsStringSync();
-    StateMenuPlan plan = StateMenuPlan.fromJson(jsonDecode(json));
-    context.read<BlocMenuPlan>().add(EventMenuPlanInit(plan));
+    readFileMenuPlanJson().then((file) {
+      var json = file.readAsStringSync();
+      StateMenuPlan plan = StateMenuPlan.fromJson(jsonDecode(json));
+      context.read<BlocMenuPlan>().add(EventMenuPlanInit(plan));
+    });
 
     super.initState();
   }
