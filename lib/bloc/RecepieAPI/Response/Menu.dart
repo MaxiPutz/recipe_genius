@@ -178,6 +178,8 @@ class Ingredient {
         measure: ingredient.measure,
         foodId: ingredient.foodId);
 
+    print("Menu.dart");
+    print(newIngredient.weight);
     newIngredient._initWeight = initWeight;
     return newIngredient;
   }

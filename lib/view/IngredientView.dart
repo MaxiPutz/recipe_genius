@@ -18,15 +18,11 @@ class IngredientView extends StatefulWidget {
 }
 
 class _IngredientViewState extends State<IngredientView> {
-  // monkey test in plus minus butten issue
   var ingredients = <String, Ingredient>{};
 
   late double selectedServings;
 
   void handleAddMenuPlanAction() {
-    print("ingrediensts bevor bloc");
-    print(ingredients.values.toList().length);
-
     context.read<BlocMenuPlan>().add(EventMenuPlanAdd(
         "key007", MenuPlan(widget.menu, ingredients.values.toList())));
   }
@@ -64,13 +60,10 @@ class _IngredientViewState extends State<IngredientView> {
     return Scaffold(
       body: BlocListener<BlocIngredient, StateIngredientAdd>(
         listener: (context, state) {
-          print(state.ingredients);
           setState(() {
             ingredients = state.ingredients;
           });
-          state.ingredients.values.toList().forEach((element) {
-            print(element);
-          });
+          state.ingredients.values.toList().forEach((element) {});
         },
         child: CustomScrollView(
           slivers: [

@@ -19,9 +19,10 @@ class StateIngredientAdd {
     var tmp = copy();
 
     tmp.ingredients[key] = val;
-    print("val");
-    print(val.weight);
-    print("val");
+    if (key == "0") {
+      print("stateIngredient");
+      print(val.weight);
+    }
 
     return tmp;
   }

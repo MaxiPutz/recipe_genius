@@ -6,10 +6,7 @@ import 'package:recipe_genius/bloc/RecepieAPI/Response/Menu.dart';
 class BlocIngredient extends Bloc<EventIngredient, StateIngredientAdd> {
   BlocIngredient() : super(StateIngredientAdd(<String, Ingredient>{})) {
     on<EventIngredientEdit>((event, emit) {
-      state.ingredients.entries.forEach((element) {
-        print(element.value.food);
-        print(element.value.weight);
-      });
+      state.ingredients.entries.forEach((element) {});
       emit(state.editIngredient(event.key, event.ingredients));
     });
     on<EventIngredientAdd>((event, emit) {

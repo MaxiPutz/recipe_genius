@@ -3,7 +3,7 @@
         "key007": {
             "ingredients": [
                 {
-                    "weight": 850.0,
+                    "weight": 1.0,
                     "food": "spinach",
                     "image": "https://www.edamam.com/food-img/e6e/e6e4be375c4554ce01c8ea75232efaa6.jpg",
                     "measure": "bunch",

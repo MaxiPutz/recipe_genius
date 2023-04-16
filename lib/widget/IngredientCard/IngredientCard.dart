@@ -28,8 +28,6 @@ class _IngredientCardState extends State<IngredientCard> {
   double weight = 0;
   late Ingredient ingredient;
 
-  late TextEditingController nameTextController;
-  late TextEditingController weightTextController;
   late BuildContext _buildContext;
 
   @override
@@ -44,7 +42,6 @@ class _IngredientCardState extends State<IngredientCard> {
   @override
   void dispose() {
     _expandedTileController.dispose();
-    nameTextController.dispose();
     super.dispose();
   }
 
@@ -52,44 +49,63 @@ class _IngredientCardState extends State<IngredientCard> {
   Widget build(BuildContext context) {
     _buildContext = context;
 
-    return Card(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ListTile(
-            title: Row(
-              children: [
-                Image.network(
-                  widget.ingredient.imageUrl,
-                  height: 50,
+    return BlocListener<BlocIngredient, StateIngredientAdd>(
+      listener: (context, state) {
+        setState(() {
+          weight = state.ingredients[widget.id.toString()]!.weight;
+        });
+      },
+      child: Card(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ExpandedTile(
+                theme: const ExpandedTileThemeData(),
+                title: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Row(
+                      children: [
+                        Image.network(
+                          widget.ingredient.imageUrl,
+                          height: 50,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                            widget.ingredientLine.name,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Text(name),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8, right: 8),
+                            child: Text(weight.toString()),
+                          ),
+                          Text("gramm")
+                        ],
+                      ),
+                    )
+                  ],
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: Text(
-                    widget.ingredientLine.name,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: ExpandedTile(
-              theme: const ExpandedTileThemeData(),
-              title: Row(
-                // ignore: prefer_const_literals_to_create_immutables
-                children: [
-                  const Text("gramm"), //widget.ingredient.measure#
-                ],
+                content: ShoppingProductsDart(
+                    ingredient: widget.ingredient, id: widget.id),
+                controller: _expandedTileController,
+                enabled: true,
               ),
-              content: ShoppingProductsDart(
-                  ingredient: widget.ingredient, id: widget.id),
-              controller: _expandedTileController,
-              enabled: true,
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_genius/bloc/Ingredient/Ingredient.dart';
@@ -17,14 +19,17 @@ class ShoppingProductsDart extends StatefulWidget {
 class _ShoppingProductsDartState extends State<ShoppingProductsDart> {
   String name = "";
   double weight = 0;
+  final Duration _debounceTime = Duration(milliseconds: 250);
+  Timer? _debounce;
 
   late Ingredient ingredient;
-  late TextEditingController nameTextController;
-  late TextEditingController weightTextController;
+  TextEditingController nameTextController = TextEditingController();
+  TextEditingController weightTextController = TextEditingController();
   late BuildContext _buildContext;
 
   @override
   void initState() {
+    print("init");
     ingredient = widget.ingredient;
     name = ingredient.food;
     weight = ingredient.weight;
@@ -38,18 +43,25 @@ class _ShoppingProductsDartState extends State<ShoppingProductsDart> {
     });
 
     weightTextController.addListener(() {
-      var _ingredient = Ingredient(
-          food: name,
-          weight: weight,
-          imageUrl: widget.ingredient.imageUrl,
-          measure: widget.ingredient.measure,
-          foodId: widget.ingredient.foodId);
-      weight = double.tryParse(weightTextController.value.text) ?? 0;
-      print(weight);
-      print("in listener");
-      _buildContext.read<BlocIngredient>().add(EventIngredientEdit(
-          widget.id.toString(),
-          Ingredient.setInitWeight(_ingredient, widget.ingredient.weight)));
+      _debounce?.cancel();
+      _debounce = Timer(_debounceTime, () {
+        weight = double.tryParse(weightTextController.value.text) ?? 0;
+
+        var _ingredient = Ingredient(
+            food: name,
+            weight: weight,
+            imageUrl: widget.ingredient.imageUrl,
+            measure: widget.ingredient.measure,
+            foodId: widget.ingredient.foodId);
+        print("/shoppingproducts.dart 48");
+
+        print(weight);
+
+        print(_ingredient.weight);
+        _buildContext.read<BlocIngredient>().add(EventIngredientEdit(
+            widget.id.toString(),
+            Ingredient.setInitWeight(_ingredient, widget.ingredient.weight)));
+      });
     });
 
     super.initState();
@@ -64,41 +76,39 @@ class _ShoppingProductsDartState extends State<ShoppingProductsDart> {
 
   @override
   Widget build(BuildContext context) {
-    return Builder(builder: (context) {
-      _buildContext = context;
-      return BlocListener<BlocIngredient, StateIngredientAdd>(
-        listener: (context, state) {
-          setState(() {
-            weight = state.ingredients[widget.id.toString()]!.weight;
-            weightTextController.value = weightTextController.value
-                .copyWith(text: weight.toStringAsFixed(2));
-          });
-          print(weight);
-          print("state weight setstate");
-        },
-        child: Expanded(
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: nameTextController,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: "Food Name"),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: TextField(
-                  controller: weightTextController,
-                  decoration: const InputDecoration(
-                      border: OutlineInputBorder(), labelText: "Food Weight"),
-                ),
-              ),
-            ],
+    _buildContext = context;
+    return BlocListener<BlocIngredient, StateIngredientAdd>(
+      listener: (context, state) {
+        setState(() {
+          weight = state.ingredients[widget.id.toString()]!.weight;
+          weightTextController.value = weightTextController.value
+              .copyWith(text: weight.toStringAsFixed(2));
+        });
+      },
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              controller: nameTextController,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), labelText: "Food Name"),
+            ),
           ),
-        ),
-      );
-    });
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: TextField(
+              onTap: () {
+                weightTextController.clear();
+              },
+              controller: weightTextController,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                  border: OutlineInputBorder(), labelText: "Food Weight"),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
