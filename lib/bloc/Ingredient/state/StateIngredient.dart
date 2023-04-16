@@ -19,6 +19,9 @@ class StateIngredientAdd {
     var tmp = copy();
 
     tmp.ingredients[key] = val;
+    print("val");
+    print(val.weight);
+    print("val");
 
     return tmp;
   }

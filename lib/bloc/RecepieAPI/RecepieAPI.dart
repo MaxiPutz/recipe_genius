@@ -7,6 +7,14 @@ import 'package:recipe_genius/bloc/RecepieAPI/event/event.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/state/StateAPI.dart';
 import 'package:http/http.dart' as http;
 import "dart:io" as io;
+import 'package:path_provider/path_provider.dart';
+import 'package:recipe_genius/platform/platform.dart';
+
+Future<String> get _localPath async {
+  final directory = await getApplicationDocumentsDirectory();
+
+  return directory.path;
+}
 
 Uri menueRequest(String appId, String appKey, String menuName) {
   var url =
@@ -23,7 +31,7 @@ class BlocAPI extends Bloc<EventAPI, StateAPI> {
 
       var newState = state.setResponseMenue(res);
 
-      var file = io.File("./test.json");
+      io.File file = await readFileTestJson();
 
       var json = jsonEncode(newState.toJson());
       var encoder = const JsonEncoder.withIndent("    ");
@@ -32,8 +40,8 @@ class BlocAPI extends Bloc<EventAPI, StateAPI> {
       emit(newState);
     }));
 
-    on<EventInitTestData>((event, emit) {
-      var jsonFile = io.File("./test.json");
+    on<EventInitTestData>((event, emit) async {
+      var jsonFile = await readFileTestJson();
       var jsonStr = jsonFile.readAsStringSync();
 
       var json = jsonDecode(jsonStr);

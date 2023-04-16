@@ -44,12 +44,13 @@ class MenuCard extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     menu.label,
-                    style: TextStyle(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16.0,
                     ),
                   ),
-                  SizedBox(height: 8.0),
                   Text(
                     "${menu.calories.toInt()} kcal",
                     style: TextStyle(fontSize: 14.0),

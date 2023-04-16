@@ -38,28 +38,6 @@ class _IngredientCardState extends State<IngredientCard> {
     name = ingredient.food;
     weight = ingredient.weight;
 
-    nameTextController = TextEditingController(text: ingredient.food);
-    weightTextController =
-        TextEditingController(text: ingredient.weight.toStringAsFixed(2));
-
-    nameTextController.addListener(() {
-      name = nameTextController.value.text;
-    });
-
-    weightTextController.addListener(() {
-      var _ingredient = Ingredient(
-          food: name,
-          weight: weight,
-          imageUrl: widget.ingredient.imageUrl,
-          measure: widget.ingredient.measure,
-          foodId: widget.ingredient.foodId);
-      weight = double.tryParse(weightTextController.value.text) ?? 0;
-      _buildContext.read<BlocIngredient>().add(EventIngredientEdit(
-          widget.id.toString(),
-          Ingredient.setInitWeight(
-              _ingredient, widget.ingredient.getInitWeight())));
-    });
-
     super.initState();
   }
 
@@ -74,77 +52,44 @@ class _IngredientCardState extends State<IngredientCard> {
   Widget build(BuildContext context) {
     _buildContext = context;
 
-    return BlocListener<BlocIngredient, StateIngredientAdd>(
-      listener: (context, state) {
-        setState(() {
-          weight = state.ingredients[widget.id.toString()]!.weight;
-          weightTextController.value = weightTextController.value
-              .copyWith(text: weight.toStringAsFixed(2));
-        });
-        print(weight);
-      },
-      child: Card(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ListTile(
-              title: Text(
-                widget.ingredientLine.name,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ExpandedTile(
-                theme: const ExpandedTileThemeData(),
-                title: Row(
-                  // ignore: prefer_const_literals_to_create_immutables
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: CircleAvatar(
-                          radius: 50,
-                          backgroundColor: (Colors.white),
-                          child: Image.network(
-                            widget.ingredient.imageUrl,
-                          )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        width: 150,
-                        child: TextField(
-                          controller: nameTextController,
-                          onSubmitted: (value) =>
-                              _expandedTileController.expand(),
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Food Name"),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: SizedBox(
-                        width: 150,
-                        child: TextField(
-                          controller: weightTextController,
-                          decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Food Weight"),
-                        ),
-                      ),
-                    ),
-                    Text("gramm"), //widget.ingredient.measure#
-                  ],
+    return Card(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ListTile(
+            title: Row(
+              children: [
+                Image.network(
+                  widget.ingredient.imageUrl,
+                  height: 50,
                 ),
-                content: ShoppingProductsDart(name),
-                controller: _expandedTileController,
-                enabled: name.length > 0,
+                Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    widget.ingredientLine.name,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ExpandedTile(
+              theme: const ExpandedTileThemeData(),
+              title: Row(
+                // ignore: prefer_const_literals_to_create_immutables
+                children: [
+                  const Text("gramm"), //widget.ingredient.measure#
+                ],
               ),
-            )
-          ],
-        ),
+              content: ShoppingProductsDart(
+                  ingredient: widget.ingredient, id: widget.id),
+              controller: _expandedTileController,
+              enabled: true,
+            ),
+          )
+        ],
       ),
     );
   }
