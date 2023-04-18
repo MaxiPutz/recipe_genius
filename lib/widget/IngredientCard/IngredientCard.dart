@@ -76,6 +76,7 @@ class _IngredientCardState extends State<IngredientCard> {
                           padding: const EdgeInsets.all(4.0),
                           child: Text(
                             widget.ingredientLine.name,
+                            maxLines: 1,
                             overflow: TextOverflow.ellipsis,
                           ),
                         ),

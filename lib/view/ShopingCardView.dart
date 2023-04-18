@@ -70,6 +70,7 @@ class FoodContent extends StatelessWidget {
               state.data[ingredient.foodId]?.results.length == 0) {
             return const Text("not found");
           }
+
           Widget price = state.dataResult[ingredient.foodId] != null
               ? Text(
                   state.dataResult[ingredient.foodId]!.price.normal.toString() +
@@ -83,7 +84,7 @@ class FoodContent extends StatelessWidget {
                     ele.images[0],
                     height: 150,
                   ) ??
-                  const Text("data"),
+                  Text("data"),
               price
             ],
           );
