@@ -30,13 +30,13 @@ class BlocBillaAPI extends Bloc<EventBillaAPI, StateBillaAPI> {
     on<EventBillaArticleDetails>(
       (event, emit) async {
         var res = await http.get(event.uri);
-        // print(res.body);
         var jsonRes = jsonDecode(res.body);
         var product = BillaProduct.fromJson(jsonRes);
+        print("BlocBillaAPI");
         print(product.name);
         print(product.price.normal);
 
-        emit(state.setProductInfo(event.foodId, product));
+        emit(state.setProductInfo(event.articleId, product));
       },
     );
   }

@@ -14,17 +14,20 @@ class StateBillaAPI {
     return newState;
   }
 
-  StateBillaAPI setData(String key, BillaAPISearchResponse res) {
+  StateBillaAPI setData(String foodId, BillaAPISearchResponse res) {
     var newState = copy();
-    newState.data[key] = res;
+    newState.data[foodId] = res;
 
     return newState;
   }
 
-  StateBillaAPI setProductInfo(String key, BillaProduct res) {
+  StateBillaAPI setProductInfo(String articleId, BillaProduct res) {
     var newState = copy();
-    newState.dataResult[key] = res;
-
+    newState.dataResult[articleId] = res;
     return newState;
+  }
+
+  BillaAPISearchResponse? getSearchResponse(String foodId) {
+    return data[foodId] ?? null;
   }
 }

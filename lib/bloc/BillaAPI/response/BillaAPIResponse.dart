@@ -20,6 +20,11 @@ class BillaAPISearchResult {
         "name": name,
         "url": url
       };
+
+  @override
+  String toString() {
+    return name;
+  }
 }
 
 class BillaAPISearchResponse {
