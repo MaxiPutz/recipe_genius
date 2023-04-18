@@ -33,7 +33,8 @@ class EventBillaAPISearch extends EventBillaAPI {
 class EventBillaArticleDetails extends EventBillaAPI {
   late Uri uri;
   String foodId;
-  EventBillaArticleDetails(this.foodId, String articleId) {
+  String articleId;
+  EventBillaArticleDetails(this.foodId, this.articleId) {
     String tmp =
         "https://shop.billa.at/api/articles/$articleId?includeDetails=true";
     uri = Uri.parse(tmp);

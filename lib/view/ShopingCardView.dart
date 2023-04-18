@@ -8,7 +8,6 @@ import 'package:recipe_genius/bloc/MenuPlan/MenuPlan.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/Response/Menu.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
 
-//big issue in the fiew
 class ShopingCardView extends StatelessWidget {
   late Map<String, Ingredient> ingredients;
 
@@ -16,13 +15,15 @@ class ShopingCardView extends StatelessWidget {
   Widget build(Object context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("ShoppingCard"),
+        title: const Text("ShoppingCard"),
       ),
       body: BlocBuilder<BlocMenuPlan, StateMenuPlan>(
         builder: (context, state) {
           ingredients = state.getIngridents();
 
           ingredients.forEach((key, value) {
+            print("ShoppinCardView");
+            print(value.food);
             context
                 .read<BlocBillaAPI>()
                 .add(EventBillaAPISearch(value.food, value.foodId, context));
@@ -59,7 +60,7 @@ class FoodContent extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text(ingredient.weight.toString() + " g"),
+            child: Text("${ingredient.weight} g"),
           )
         ],
       ),
@@ -67,19 +68,28 @@ class FoodContent extends StatelessWidget {
       content: BlocBuilder<BlocBillaAPI, StateBillaAPI>(
         builder: (context, state) {
           if (state.data[ingredient.foodId]?.results == null ||
-              state.data[ingredient.foodId]?.results.length == 0) {
+              state.data[ingredient.foodId]!.results.isEmpty) {
             return const Text("not found");
           }
 
-          Widget price = state.dataResult[ingredient.foodId] != null
-              ? Text(
-                  state.dataResult[ingredient.foodId]!.price.normal.toString() +
-                      "\t€")
-              : Text("price not found");
-
           var ele = state.data[ingredient.foodId]!.results[0];
+          var ele2 = state.dataResult[ele.articleId];
+
+          Widget price = state.dataResult[ele.articleId] != null
+              ? Text("${state.dataResult[ele.articleId]!.price.normal}\t€")
+              : const Text("price not found");
+
+          print("ShopingCardView");
+          print(state.data[ingredient.foodId]!.results.length);
+          print(state.data[ingredient.foodId]!.results);
+
           return Row(
             children: [
+              Column(children: [
+                Text(ele2?.name ?? "load"),
+                Text(ele2?.grammage ?? "load"),
+                Text(ele2?.price.unit ?? "load"),
+              ]),
               Image.network(
                     ele.images[0],
                     height: 150,

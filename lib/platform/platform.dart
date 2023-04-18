@@ -6,7 +6,7 @@ Future<io.Directory> appDocumentsDir() async =>
     await getApplicationDocumentsDirectory();
 
 Future<io.File> readFileTestJson() async {
-  if (io.Platform.isIOS) {
+  if (io.Platform.isIOS || io.Platform.isLinux) {
     var dir = (await appDocumentsDir()).path;
 
     if (io.File("$dir/test.json").existsSync()) {
@@ -24,11 +24,12 @@ Future<io.File> readFileTestJson() async {
 }
 
 Future<io.File> readFileMenuPlanJson() async {
-  if (io.Platform.isIOS) {
+  if (io.Platform.isIOS || io.Platform.isLinux) {
     var dir = (await appDocumentsDir()).path;
 
     if (io.File("$dir/MenuPlan.json").existsSync()) {
-      return io.File("$dir/test.json");
+      print("object exist");
+      return io.File("$dir/MenuPlan.json");
     }
     var byte = await rootBundle.load("test/MenuPlan.json");
     io.File file = io.File("$dir/MenuPlan.json");

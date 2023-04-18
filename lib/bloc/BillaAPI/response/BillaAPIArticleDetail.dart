@@ -33,11 +33,14 @@ class BillaProduct {
 
   factory BillaProduct.fromJson(Map<String, dynamic> json) {
     return BillaProduct(
-      seoTitle: json['seoTitle'],
-      url: json['url'],
-      articleOnlyCanonicalPath: json['articleOnlyCanonicalPath'],
+      seoTitle: json['seoTitle'] ?? "seoTitle not found",
+      url: json['url'] ??
+          "https://docs.flutter.dev/assets/images/dash/dash-fainting.gif",
+      articleOnlyCanonicalPath: json['articleOnlyCanonicalPath'] ?? "",
       canonicalPath: json['canonicalPath'],
-      paths: List<String>.from(json['paths'].map((x) => x)),
+      paths: json['paths'] != null
+          ? List<String>.from(json['paths'].map((x) => x ?? "path not found"))
+          : ["paths not found"],
       recipeID: json['recipeID'],
       articleId: json['articleId'],
       name: json['name'],
@@ -80,7 +83,7 @@ class BillaPrice {
     return BillaPrice(
       normal: json['normal'].toDouble(),
       sale: json['sale'].toDouble(),
-      unit: json['unit'],
+      unit: json['unit'] ?? "unit not found",
       finalPrice: json['final'].toDouble(),
       priceTypeDefinitions:
           List<dynamic>.from(json['priceTypeDefinitions'].map((x) => x)),
