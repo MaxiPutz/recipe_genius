@@ -23,9 +23,9 @@ class BlocBillaAPI extends Bloc<EventBillaAPI, StateBillaAPI> {
         print(element.articleId);
         event.context
             .read<BlocBillaAPI>()
-            .add(EventBillaArticleDetails(event.key, element.articleId));
+            .add(EventBillaArticleDetails(event.foodId, element.articleId));
       });
-      emit(state.setData(event.key, billaRes));
+      emit(state.setData(event.foodId, billaRes));
     });
     on<EventBillaArticleDetails>(
       (event, emit) async {
