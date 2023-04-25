@@ -42,6 +42,8 @@ dependencies:
   sqflite_common_ffi: ^2.2.3
   sqlite3: ^1.11.0
   sqflite: ^2.2.6
+  google_translator: ^1.0.0
+  google_cloud_translation: ^0.0.3
 
 dev_dependencies:
   flutter_test:

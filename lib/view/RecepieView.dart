@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_translator/google_translator.dart';
 import 'package:recipe_genius/bloc/BillaAPI/BlocBillaAPI.dart';
 import 'package:recipe_genius/bloc/BillaAPI/event/EventBillaAPI.dart';
 import 'package:recipe_genius/bloc/MenuPlan/MenuPlan.dart';
@@ -11,6 +12,7 @@ import 'package:recipe_genius/bloc/RecepieAPI/RecepieAPI.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/event/event.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/state/StateAPI.dart';
 import 'package:recipe_genius/platform/platform.dart';
+import 'package:recipe_genius/translation/GoogleTranslator.dart';
 import 'package:recipe_genius/view/MenuView.dart';
 import 'package:recipe_genius/view/ShopingCardView.dart';
 import 'dart:io' as io;
@@ -38,6 +40,13 @@ class _RecepieViewState extends State<RecepieView> {
 
   @override
   void initState() {
+    (() async {
+      final val = await translateFromEnToDe("creamed spinach");
+      print("tranllate");
+      print(val);
+      print("translate end");
+    })();
+
     context.read<BlocAPI>().add(EventInitTestData());
     readFileMenuPlanJson().then((file) {
       var json = file.readAsStringSync();

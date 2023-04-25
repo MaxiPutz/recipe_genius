@@ -80,11 +80,3 @@ Future<TranslationDB> getTranslation(String id) async {
   print(translation.german);
   return translation;
 }
-
-Future<TranslationDB> findTranslation(String foodName) async {
-  final db = await DatabaseSingleton.getInstance();
-  final translation = await db.findTranslation(foodName);
-  print(translation.german);
-  print("findTranslation");
-  return translation;
-}

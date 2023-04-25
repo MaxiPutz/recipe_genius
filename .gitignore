@@ -1,3 +1,5 @@
+# keys
+/lib/key/**
 # Miscellaneous
 *.class
 *.log
