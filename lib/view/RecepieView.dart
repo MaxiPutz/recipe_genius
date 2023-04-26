@@ -14,7 +14,7 @@ import 'package:recipe_genius/bloc/RecepieAPI/state/StateAPI.dart';
 import 'package:recipe_genius/platform/platform.dart';
 import 'package:recipe_genius/translation/GoogleTranslator.dart';
 import 'package:recipe_genius/view/MenuView.dart';
-import 'package:recipe_genius/view/ShopingCardView.dart';
+import 'package:recipe_genius/view/BillaShop.dart';
 import 'dart:io' as io;
 
 class RecepieView extends StatefulWidget {
@@ -31,7 +31,7 @@ class _RecepieViewState extends State<RecepieView> {
     context.read<BlocBillaAPI>().add(EventBillaAPISearch(
         "spinach", "food_aoceuc6bshdej1bbsdammbnj6l6o", context));
     Navigator.push(
-        context, MaterialPageRoute(builder: (context) => ShopingCardView()));
+        context, MaterialPageRoute(builder: (context) => BillaShop()));
   }
 
   void floatingActionButton(BuildContext context) {
@@ -65,7 +65,7 @@ class _RecepieViewState extends State<RecepieView> {
         actions: [
           IconButton(
               onPressed: () => toolBarAction(context),
-              icon: const Icon(Icons.shopping_cart_checkout)),
+              icon: const Icon(Icons.shop)),
         ],
       ),
       body: BlocBuilder<BlocAPI, StateAPI>(builder: (context, data) {

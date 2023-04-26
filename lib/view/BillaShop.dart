@@ -7,16 +7,25 @@ import 'package:recipe_genius/bloc/MenuPlan/state/StateMenuPlan.dart';
 import 'package:recipe_genius/bloc/MenuPlan/MenuPlan.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/Response/Menu.dart';
 import 'package:flutter_expanded_tile/flutter_expanded_tile.dart';
+import 'package:recipe_genius/view/ShoppingCart.dart';
 import 'package:recipe_genius/widget/FoodContent/FoodContend.dart';
 
-class ShopingCardView extends StatelessWidget {
+class BillaShop extends StatelessWidget {
   late Map<String, Ingredient> ingredients;
 
   @override
-  Widget build(Object context) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("ShoppingCard"),
+        title: const Text("BillaShop"),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => ShoppingCart()));
+              },
+              icon: Icon(Icons.shopping_cart))
+        ],
       ),
       body: BlocBuilder<BlocMenuPlan, StateMenuPlan>(
         builder: (context, state) {

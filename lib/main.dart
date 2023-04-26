@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_genius/bloc/BillaAPI/BlocBillaAPI.dart';
+import 'package:recipe_genius/bloc/BillaShoppingCart/BlocBillaShoppingCart.dart';
 import 'package:recipe_genius/bloc/Ingredient/Ingredient.dart';
 import 'package:recipe_genius/bloc/MenuPlan/MenuPlan.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/RecepieAPI.dart';
@@ -32,7 +33,9 @@ class MyApp extends StatelessWidget {
         BlocProvider<BlocAPI>(create: (context) => BlocAPI()),
         BlocProvider<BlocMenuPlan>(create: (context) => BlocMenuPlan()),
         BlocProvider<BlocIngredient>(create: (context) => BlocIngredient()),
-        BlocProvider<BlocBillaAPI>(create: (context) => BlocBillaAPI())
+        BlocProvider<BlocBillaAPI>(create: (context) => BlocBillaAPI()),
+        BlocProvider<BlocBillaShoppingcart>(
+            create: (context) => BlocBillaShoppingcart())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',
