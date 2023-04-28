@@ -40,3 +40,21 @@ Future<io.File> readFileMenuPlanJson() async {
 
   return io.File("./test/MenuPlan.json");
 }
+
+Future<io.File> readFileBaskedId() async {
+  if (io.Platform.isIOS || io.Platform.isLinux) {
+    var dir = (await appDocumentsDir()).path;
+
+    if (io.File("$dir/BaskedId.txt").existsSync()) {
+      print("object exist");
+      return io.File("$dir/BaskedId.txt");
+    }
+    var byte = await rootBundle.load("test/BaskedId.txt");
+    io.File file = io.File("$dir/BaskedId.txt");
+    file.writeAsBytesSync(byte.buffer.asInt8List());
+
+    return file;
+  }
+
+  return io.File("./test/BaskedId.txt");
+}

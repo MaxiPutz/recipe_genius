@@ -42,7 +42,7 @@ class FoodContentList extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Text("${ingredient.weight.ceil()} g"),
           ),
-          BlocBuilder<BlocBillaShoppingcart, StateBillaShoppingCart>(
+          BlocBuilder<BlocBillaShoppingCart, StateBillaShoppingCart>(
               builder: (context, state) {
             var articles = state.articles
                 .where(((element) => element.foodId == ingredient.foodId))
@@ -152,7 +152,7 @@ class _FoodContendState extends State<FoodContend> {
     setState(() {
       count++;
     });
-    context.read<BlocBillaShoppingcart>().add(EventBillaShoppingCartAdd(Article(
+    context.read<BlocBillaShoppingCart>().add(EventBillaShoppingCartAdd(Article(
         articleName: widget.dataResult!.name,
         articleUrl: widget.result.images[0],
         articleId: widget.dataResult!.articleId,
@@ -169,7 +169,7 @@ class _FoodContendState extends State<FoodContend> {
     setState(() {
       count--;
     });
-    context.read<BlocBillaShoppingcart>().add(EventBillaShoppingCartRemove(
+    context.read<BlocBillaShoppingCart>().add(EventBillaShoppingCartRemove(
         Article(
             articleName: widget.dataResult!.name,
             articleUrl: widget.result.images[0],

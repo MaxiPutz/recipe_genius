@@ -17,9 +17,16 @@ class BlocMenuPlan extends Bloc<EventMenuPlan, StateMenuPlan> {
       var encoder = const JsonEncoder.withIndent("    ");
       file.writeAsStringSync(encoder.convert(tmp));
     });
-
     on<EventMenuPlanInit>(
       (event, emit) => emit(event.stateMenuPlan.copy()),
     );
+    on<EventMenuPlanClear>((event, emit) async {
+      var tmp = state.clearMenuPlan();
+      emit(tmp);
+      var file = await readFileMenuPlanJson();
+
+      var encoder = const JsonEncoder.withIndent("    ");
+      file.writeAsStringSync(encoder.convert(tmp));
+    });
   }
 }

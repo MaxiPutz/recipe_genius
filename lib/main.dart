@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:recipe_genius/bloc/BillaAPI/BlocBillaAPI.dart';
+import 'package:recipe_genius/bloc/BillaAPI/event/EventBillaAPI.dart';
 import 'package:recipe_genius/bloc/BillaShoppingCart/BlocBillaShoppingCart.dart';
 import 'package:recipe_genius/bloc/Ingredient/Ingredient.dart';
 import 'package:recipe_genius/bloc/MenuPlan/MenuPlan.dart';
@@ -11,6 +12,7 @@ import 'package:recipe_genius/view/RecepieView.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:recipe_genius/translation/translation.dart';
 import 'dart:io' as io;
+import 'package:http/http.dart' as http;
 
 import 'bloc/AppBlocObserver.dart';
 
@@ -34,8 +36,8 @@ class MyApp extends StatelessWidget {
         BlocProvider<BlocMenuPlan>(create: (context) => BlocMenuPlan()),
         BlocProvider<BlocIngredient>(create: (context) => BlocIngredient()),
         BlocProvider<BlocBillaAPI>(create: (context) => BlocBillaAPI()),
-        BlocProvider<BlocBillaShoppingcart>(
-            create: (context) => BlocBillaShoppingcart())
+        BlocProvider<BlocBillaShoppingCart>(
+            create: (context) => BlocBillaShoppingCart())
       ],
       child: MaterialApp(
         title: 'Flutter Demo',

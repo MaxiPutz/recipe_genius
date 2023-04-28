@@ -11,3 +11,5 @@ class EventBillaShoppingCartRemove extends EventBillaShoppingCart {
   Article article;
   EventBillaShoppingCartRemove(this.article);
 }
+
+class EventBillaShoppingCartSend extends EventBillaShoppingCart {}
