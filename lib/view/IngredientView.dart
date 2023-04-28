@@ -24,7 +24,7 @@ class _IngredientViewState extends State<IngredientView> {
 
   void handleAddMenuPlanAction() {
     context.read<BlocMenuPlan>().add(EventMenuPlanAdd(
-        "key007", MenuPlan(widget.menu, ingredients.values.toList())));
+        widget.menu.url, MenuPlan(widget.menu, ingredients.values.toList())));
   }
 
   @override

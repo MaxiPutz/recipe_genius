@@ -1,30 +1,37 @@
+import 'dart:async';
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:recipe_genius/bloc/BillaAPI/BlocBillaAPI.dart';
-import 'package:recipe_genius/bloc/BillaAPI/event/YandayKey.dart/Key.dart';
-import 'package:http/http.dart' as http;
+import 'package:recipe_genius/platform/platform.dart';
+import 'package:recipe_genius/translation/GoogleTranslator.dart';
+import 'package:recipe_genius/translation/translation.dart';
 
-const int PAGESIZE = 2;
+const int PAGESIZE = 4;
 
 abstract class EventBillaAPI {}
 
 class EventBillaAPISearch extends EventBillaAPI {
   late Uri uri;
   BuildContext context;
-  String key;
+  String foodId;
   String product;
-  EventBillaAPISearch(this.product, this.key, this.context) {
+  EventBillaAPISearch(this.product, this.foodId, this.context) {
     String tmp =
         "https://www.billa.at/api/products/search/$product?page=0&pageSize=$PAGESIZE";
     uri = Uri.parse(tmp);
   }
 
   Future<Uri> getGermanUri() async {
-    var res = await http.get(Yanday().uriEnglischtoGerman(this.product));
-    var yandayRes = YandexResponse.fromJson(jsonDecode(res.body));
-    var product = yandayRes.translations.first;
+    var val = await getTranslation(foodId);
 
+    if (val.german.length > 1) {
+      print("should not here");
+      return Uri.parse(
+          "https://www.billa.at/api/products/search/${val.german}?page=0&pageSize=$PAGESIZE");
+    }
+
+    product = await translateFromEnToDe(product);
     return Uri.parse(
         "https://www.billa.at/api/products/search/$product?page=0&pageSize=$PAGESIZE");
   }
@@ -41,4 +48,46 @@ class EventBillaArticleDetails extends EventBillaAPI {
   }
 }
 
-class EventBillaAPIAddToBascet extends EventBillaAPI {}
+class EventBillaAPIAddToBascet extends EventBillaAPI {
+  int quantity;
+  String articleId;
+
+  EventBillaAPIAddToBascet({required this.articleId, required this.quantity});
+
+  Future<String> _getBaskedId() async {
+    var file = await readFileBaskedId();
+    return file.readAsStringSync();
+  }
+
+  Future<Uri> _getUri() async {
+    var baskedId = await _getBaskedId();
+    print("baskedId");
+    print(baskedId);
+    return Uri.parse("https://shop.billa.at/api/basket/$baskedId/items");
+  }
+
+  Future<PostBilla> getPostRequest() async {
+    final uri = await _getUri();
+    return PostBilla(uri: uri, articleId: articleId, quantity: quantity);
+  }
+}
+
+class PostBilla {
+  Uri uri;
+  Map<String, String> headers = {
+    HttpHeaders.contentTypeHeader: "application/json;charset=utf-8"
+  };
+  late Object body;
+  PostBilla({
+    required this.uri,
+    required String articleId,
+    required int quantity,
+  }) {
+    body = jsonEncode([
+      {
+        "articleId": articleId,
+        "quantity": quantity,
+      }
+    ]);
+  }
+}

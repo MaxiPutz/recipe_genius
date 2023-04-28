@@ -18,3 +18,5 @@ class EventMenuPlanInit extends EventMenuPlan {
   StateMenuPlan stateMenuPlan;
   EventMenuPlanInit(this.stateMenuPlan);
 }
+
+class EventMenuPlanClear extends EventMenuPlan {}

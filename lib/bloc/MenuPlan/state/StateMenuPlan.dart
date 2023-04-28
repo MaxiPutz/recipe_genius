@@ -11,6 +11,13 @@ class StateMenuPlan {
     return newState;
   }
 
+  StateMenuPlan clearMenuPlan() {
+    var newState = copy();
+    newState.menuplans = <String, MenuPlan>{};
+
+    return newState;
+  }
+
   StateMenuPlan addMenuPlan(String key, MenuPlan menuPlan) {
     var newState = copy();
     newState.menuplans[key] = menuPlan;
