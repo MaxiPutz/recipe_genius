@@ -10,7 +10,6 @@ import 'package:recipe_genius/bloc/MenuPlan/MenuPlan.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/RecepieAPI.dart';
 import 'package:recipe_genius/view/RecepieView.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:recipe_genius/translation/translation.dart';
 import 'dart:io' as io;
 import 'package:http/http.dart' as http;
 

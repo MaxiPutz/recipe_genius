@@ -39,12 +39,8 @@ dependencies:
   http: ^0.13.5
   flutter_expanded_tile: ^0.3.7
   path_provider: ^2.0.14
-  sqflite_common_ffi: ^2.2.3
-  sqlite3: ^1.11.0
-  sqflite: ^2.2.6
-  google_translator: ^1.0.0
-  google_cloud_translation: ^0.0.3
   flutter_svg: ^2.0.5
+  google_cloud_translation: ^0.0.3
 
 dev_dependencies:
   flutter_test:
@@ -74,7 +70,6 @@ flutter:
     - test/MenuPlan.json
     - test/BaskedId.txt
     - test/food-spinach.svg
-    - database/foods.db
 
   #   - images/a_dot_ham.jpeg
 

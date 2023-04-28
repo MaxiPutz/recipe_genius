@@ -5,7 +5,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:recipe_genius/platform/platform.dart';
 import 'package:recipe_genius/translation/GoogleTranslator.dart';
-import 'package:recipe_genius/translation/translation.dart';
 
 const int PAGESIZE = 4;
 
@@ -23,14 +22,6 @@ class EventBillaAPISearch extends EventBillaAPI {
   }
 
   Future<Uri> getGermanUri() async {
-    var val = await getTranslation(foodId);
-
-    if (val.german.length > 1) {
-      print("should not here");
-      return Uri.parse(
-          "https://www.billa.at/api/products/search/${val.german}?page=0&pageSize=$PAGESIZE");
-    }
-
     product = await translateFromEnToDe(product);
     return Uri.parse(
         "https://www.billa.at/api/products/search/$product?page=0&pageSize=$PAGESIZE");
