@@ -13,9 +13,9 @@ To install the app, follow these steps:
 
 4. In the edmamKey.dart file, define your Edamam API ID and key as follows:
 
-```
 dart
 Copy code
+```
 class APIKey {
   late String appID;
   late String appKey;
