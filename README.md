@@ -2,10 +2,6 @@
 
 Recipe Genius is an app that helps you find recipes based on the ingredients you have on hand. It integrates with the Edamam and Billa APIs to provide a rich database of recipes and products. The app also uses the Google Translate API to translate recipe instructions and ingredient names between languages.
 
-https://user-images.githubusercontent.com/48091139/235498471-f24c793f-efa9-4893-a435-69c75d4583bb.mp4
-
-
-
 # Installation
 To install the app, follow these steps:
 
@@ -43,6 +39,21 @@ String getGoogleTranlateKey() {
 }
 ```
 6. Save the files and run the app.
+
+# Technologies Used
+
+This app was built using the following technologies:
+
+- Flutter (https://flutter.dev/)
+- Dart (https://dart.dev/)
+- APIs:
+  - Edamam API (https://developer.edamam.com/edamam-docs-recipe-api)
+  - Google Translate API (https://cloud.google.com/translate)
+  - Billa API (https://siteapi.vorbestellservice.billa.at/index.html)
+- Bloc (https://bloclibrary.dev/)
+- Material UI (https://flutter.dev/docs/development/ui/widgets/material)
+
+These technologies were chosen for their reliability, ease of use, and integration with the Flutter framework. By using these technologies, we were able to build a powerful and user-friendly app that helps users find and prepare delicious recipes with ease.
 
 
 # API Integration
