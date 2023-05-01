@@ -64,7 +64,7 @@ https://adminapi.vorbestellservice.billa.at/index.html
 5. Click the "Add to shopping list" button to add the recipe to your shopping list.
 6. Repeat steps 1-5 for all the recipes you want to cook.
 7. Go to the shopping list view to view all the ingredients you need to purchase.
-8. Select all articles  from the ingredients list. 
+8. Find the best products to buy for the ingredients on your shopping list
 9. Go to the ceckout fill in the AnonymousCartId and press the send button.
 
 If you decide to prepare the recipe, Recipe Genius will use the translated ingredient names to search for the required products in the Billa API. You can then order the products directly from Billa to complete the recipe.
