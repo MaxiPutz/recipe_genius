@@ -1,6 +1,6 @@
 # Gecipe Genius
 
-Recipe Genius is an app that helps you find recipes based on the ingredients you have on hand. It integrates with the Edamam and Billa APIs to provide a rich database of recipes and products. The app also uses the Google Translate API to translate recipe instructions and ingredient names between languages.
+Recipe Genius is an app that helps you find the ingredients based on the recipes. It integrates with the Edamam and Billa APIs to provide a rich database of recipes and products. The app also uses the Google Translate API to translate recipe instructions and ingredient names between languages.
 
 
 - ![output](https://user-images.githubusercontent.com/48091139/235503165-9b36efe0-b054-4987-b866-375b9b8804b4.gif)
