@@ -87,7 +87,7 @@ class _RecepieViewState extends State<RecepieView> {
               icon: const Icon(Icons.shop)),
         ],
         bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(48),
+          preferredSize: const Size.fromHeight(55),
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Row(

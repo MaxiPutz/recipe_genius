@@ -8,9 +8,10 @@ import 'dart:io' as io;
 import 'package:recipe_genius/platform/platform.dart';
 
 class BlocMenuPlan extends Bloc<EventMenuPlan, StateMenuPlan> {
-  BlocMenuPlan() : super(StateMenuPlan(<String, MenuPlan>{})) {
+  BlocMenuPlan()
+      : super(StateMenuPlan(<String, MenuPlan>{}, <String, double>{})) {
     on<EventMenuPlanAdd>((event, emit) async {
-      var tmp = state.addMenuPlan(event.key, event.menuPlan);
+      var tmp = state.addMenuPlan(event.key, event.menuPlan, event.servings);
       emit(tmp);
       var file = await readFileMenuPlanJson();
 

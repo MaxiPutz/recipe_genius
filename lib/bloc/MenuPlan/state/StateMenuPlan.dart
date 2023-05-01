@@ -4,10 +4,11 @@ import 'dart:io';
 
 class StateMenuPlan {
   Map<String, MenuPlan> menuplans;
-  StateMenuPlan(this.menuplans);
+  Map<String, double> servings;
+  StateMenuPlan(this.menuplans, this.servings);
 
   StateMenuPlan copy() {
-    var newState = StateMenuPlan(menuplans);
+    var newState = StateMenuPlan(menuplans, servings);
     return newState;
   }
 
@@ -18,9 +19,10 @@ class StateMenuPlan {
     return newState;
   }
 
-  StateMenuPlan addMenuPlan(String key, MenuPlan menuPlan) {
+  StateMenuPlan addMenuPlan(String key, MenuPlan menuPlan, double servings) {
     var newState = copy();
     newState.menuplans[key] = menuPlan;
+    newState.servings[key] = servings;
 
     return newState;
   }
@@ -50,13 +52,17 @@ class StateMenuPlan {
 
   factory StateMenuPlan.fromJson(Map<String, dynamic> json) {
     Map<String, MenuPlan> menuplansMap = {};
+    Map<String, double> servings = {};
 
     menuplansMap = (json["menuplans"] as Map<String, dynamic>)
         .map<String, MenuPlan>((key, value) {
       return MapEntry(key, MenuPlan.fromJson(value));
     });
 
-    return StateMenuPlan(menuplansMap);
+    servings = (json["servings"] as Map<String, dynamic>)
+        .map<String, double>((key, value) => MapEntry(key, value));
+
+    return StateMenuPlan(menuplansMap, servings);
   }
 
   Map<String, dynamic> toJson() {
@@ -64,6 +70,7 @@ class StateMenuPlan {
         .map<String, dynamic>((key, value) => MapEntry(key, value.toJson()));
 
     return {
+      "servings": servings,
       "menuplans": val,
     };
   }

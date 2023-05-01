@@ -68,16 +68,22 @@ class _IngredientCardState extends State<IngredientCard> {
                   children: [
                     Row(
                       children: [
-                        Image.network(
-                          widget.ingredient.imageUrl,
-                          height: 50,
+                        Expanded(
+                          flex: 1,
+                          child: Image.network(
+                            widget.ingredient.imageUrl,
+                            height: 50,
+                          ),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.all(4.0),
-                          child: Text(
-                            widget.ingredientLine.name,
-                            maxLines: 1,
-                            overflow: TextOverflow.ellipsis,
+                        Expanded(
+                          flex: 9,
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              widget.ingredientLine.name,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
                           ),
                         ),
                       ],
@@ -88,12 +94,25 @@ class _IngredientCardState extends State<IngredientCard> {
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          Text(name),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 8, right: 8),
-                            child: Text(weight.toString()),
+                          Expanded(
+                            flex: 5,
+                            child: Text(
+                              name,
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.end,
+                            ),
                           ),
-                          Text("gramm")
+                          Expanded(
+                            flex: 1,
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 8, right: 8),
+                              child: Text(
+                                weight.toStringAsFixed(1),
+                                textAlign: TextAlign.end,
+                              ),
+                            ),
+                          ),
+                          const Expanded(flex: 1, child: Text("grams"))
                         ],
                       ),
                     )

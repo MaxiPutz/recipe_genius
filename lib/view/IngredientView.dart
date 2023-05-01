@@ -23,8 +23,8 @@ class _IngredientViewState extends State<IngredientView> {
   late double selectedServings;
 
   void handleAddMenuPlanAction() {
-    context.read<BlocMenuPlan>().add(EventMenuPlanAdd(
-        widget.menu.url, MenuPlan(widget.menu, ingredients.values.toList())));
+    context.read<BlocMenuPlan>().add(EventMenuPlanAdd(widget.menu.url,
+        MenuPlan(widget.menu, ingredients.values.toList()), selectedServings));
   }
 
   @override
@@ -71,9 +71,61 @@ class _IngredientViewState extends State<IngredientView> {
               title: const Text("Ingredient"),
               pinned: false,
               expandedHeight: 450,
-              flexibleSpace: Image(
-                image: Image.network(widget.menu.image).image,
-                fit: BoxFit.fitWidth,
+              flexibleSpace: Stack(
+                fit: StackFit.expand,
+                textDirection: TextDirection.rtl,
+                children: [
+                  Image(
+                    image: Image.network(widget.menu.image).image,
+                    fit: BoxFit.fitWidth,
+                  ),
+                  BlocBuilder<BlocMenuPlan, StateMenuPlan>(
+                    builder: (context, state) {
+                      widget.menu.url;
+
+                      final menuKey = widget.menu.url;
+
+                      if (state.menuplans[menuKey] != null) {
+                        print(state.menuplans);
+                        print("appbar to somthink");
+                        final count =
+                            state.menuplans[menuKey]?.menu.servings ?? 0;
+                        final count2 = state.servings[menuKey];
+                        print(count);
+                        print(count2);
+
+                        return Positioned(
+                            top: 0,
+                            right: 0,
+                            child: Stack(
+                              children: [
+                                const Icon(
+                                  Icons.bookmark,
+                                  color: Colors.blue,
+                                  size: 75,
+                                ),
+                                Positioned(
+                                  top: 24,
+                                  left: 0,
+                                  right: 0,
+                                  child: Text(
+                                    count2?.toStringAsFixed(0) ?? "-1",
+                                    textAlign: TextAlign.center,
+                                    style: const TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ));
+                      }
+
+                      return Container();
+                    },
+                  )
+                ],
               ),
             ),
             SliverList(

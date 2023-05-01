@@ -23,12 +23,6 @@ class MenuBookView extends StatelessWidget {
               clearMenuPlan(context);
             },
           ),
-          IconButton(
-            icon: Icon(Icons.clear_all),
-            onPressed: () {
-              clearMenuPlan(context);
-            },
-          ),
         ],
       ),
       body: Center(

@@ -11,7 +11,8 @@ class EventMenuPlanAddIngredient extends EventMenuPlan {
 class EventMenuPlanAdd extends EventMenuPlan {
   MenuPlan menuPlan;
   String key;
-  EventMenuPlanAdd(this.key, this.menuPlan);
+  double servings;
+  EventMenuPlanAdd(this.key, this.menuPlan, this.servings);
 }
 
 class EventMenuPlanInit extends EventMenuPlan {

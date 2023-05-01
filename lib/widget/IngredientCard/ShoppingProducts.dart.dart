@@ -36,7 +36,7 @@ class _ShoppingProductsDartState extends State<ShoppingProductsDart> {
 
     nameTextController = TextEditingController(text: ingredient.food);
     weightTextController =
-        TextEditingController(text: ingredient.weight.toStringAsFixed(2));
+        TextEditingController(text: ingredient.weight.toStringAsFixed(1));
 
     nameTextController.addListener(() {
       name = nameTextController.value.text;
@@ -45,7 +45,11 @@ class _ShoppingProductsDartState extends State<ShoppingProductsDart> {
     weightTextController.addListener(() {
       _debounce?.cancel();
       _debounce = Timer(_debounceTime, () {
-        weight = double.tryParse(weightTextController.value.text) ?? 0;
+        var _weigth = double.tryParse(weightTextController.value.text)
+                ?.toStringAsFixed(1) ??
+            "0";
+
+        weight = double.tryParse(_weigth) ?? 0;
 
         var _ingredient = Ingredient(
             food: name,
