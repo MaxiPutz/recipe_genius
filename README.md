@@ -5,14 +5,15 @@ Recipe Genius is an app that helps you find recipes based on the ingredients you
 # Installation
 To install the app, follow these steps:
 
-Clone the repository to your local machine.
+1. Clone the repository to your local machine.
 
-Create a key folder in the lib directory.
+2. Create a key folder in the lib directory.
 
-Inside the key folder, create two files: edmamKey.dart and googleTranslateKey.dart.
+3. Inside the key folder, create two files: edmamKey.dart and googleTranslateKey.dart.
 
-In the edmamKey.dart file, define your Edamam API ID and key as follows:
+4. In the edmamKey.dart file, define your Edamam API ID and key as follows:
 
+```
 dart
 Copy code
 class APIKey {
@@ -29,6 +30,7 @@ class APIKey {
         'appKey': appKey,
       };
 }
+```
 In the googleTranslateKey.dart file, define your Google Translate API key as follows:
 
 dart
