@@ -38,7 +38,7 @@ class ShoppingCart extends StatelessWidget {
               Expanded(child: Text("ShoppingCart")),
               Expanded(
                   child: Text(
-                "Price\t $totalPrice",
+                "Price\t ${totalPrice.toStringAsFixed(2)}€",
                 textAlign: TextAlign.end,
               )),
             ],
@@ -63,7 +63,7 @@ class ShoppingCart extends StatelessWidget {
                             state.articles[index].count.toString() +
                             "\t€"),
                         Text(
-                            "total price\t${state.articles[index].price * state.articles[index].count}\t€")
+                            "total price\t${(state.articles[index].price * state.articles[index].count).toStringAsFixed(2)}\t€")
                       ],
                     ),
                   )

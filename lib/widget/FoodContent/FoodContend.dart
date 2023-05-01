@@ -54,14 +54,16 @@ class FoodContentList extends StatelessWidget {
 
             var price = articles
                 .map((e) => e.price * e.count)
-                .reduce((value, element) => value + element);
+                .reduce((value, element) => value + element)
+                .toStringAsFixed(2);
 
             var weight = articles
                 .map((e) => e.getWeight() * e.count)
-                .reduce((value, element) => value + element);
+                .reduce((value, element) => value + element)
+                .toStringAsFixed(1);
 
             return Column(
-              children: [Text("$price\t€"), Text("${weight}")],
+              children: [Text("$price\t€"), Text("${weight}\tg")],
             );
           }),
         ],

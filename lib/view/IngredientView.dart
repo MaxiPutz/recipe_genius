@@ -72,7 +72,7 @@ class _IngredientViewState extends State<IngredientView> {
               pinned: false,
               expandedHeight: 450,
               flexibleSpace: Stack(
-                fit: StackFit.expand,
+                fit: StackFit.passthrough,
                 textDirection: TextDirection.rtl,
                 children: [
                   Image(

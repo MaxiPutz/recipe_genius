@@ -103,7 +103,7 @@ class _IngredientCardState extends State<IngredientCard> {
                             ),
                           ),
                           Expanded(
-                            flex: 1,
+                            flex: 2,
                             child: Padding(
                               padding: const EdgeInsets.only(left: 8, right: 8),
                               child: Text(
@@ -112,7 +112,7 @@ class _IngredientCardState extends State<IngredientCard> {
                               ),
                             ),
                           ),
-                          const Expanded(flex: 1, child: Text("grams"))
+                          const Expanded(flex: 1, child: Text("g"))
                         ],
                       ),
                     )
