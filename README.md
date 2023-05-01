@@ -2,6 +2,10 @@
 
 Recipe Genius is an app that helps you find recipes based on the ingredients you have on hand. It integrates with the Edamam and Billa APIs to provide a rich database of recipes and products. The app also uses the Google Translate API to translate recipe instructions and ingredient names between languages.
 
+https://user-images.githubusercontent.com/48091139/235498471-f24c793f-efa9-4893-a435-69c75d4583bb.mp4
+
+
+
 # Installation
 To install the app, follow these steps:
 
@@ -66,6 +70,8 @@ https://adminapi.vorbestellservice.billa.at/index.html
 7. Go to the shopping list view to view all the ingredients you need to purchase.
 8. Find the best products to buy for the ingredients on your shopping list
 9. Go to the ceckout fill in the AnonymousCartId and press the send button.
+
+https://user-images.githubusercontent.com/48091139/235498503-7e5fd7c4-9ef9-4394-a83f-a8125115dafa.mp4
 
 If you decide to prepare the recipe, Recipe Genius will use the translated ingredient names to search for the required products in the Billa API. You can then order the products directly from Billa to complete the recipe.
 
