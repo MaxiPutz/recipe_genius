@@ -32,11 +32,11 @@ class APIKey {
 ```
 In the googleTranslateKey.dart file, define your Google Translate API key as follows:
 
-dart
+```dart
 Copy code
 String getGoogleTranlateKey() {
   return "<your google translate key>";
-}
+}```
 Save the files and run the app.
 
 # API Integration
