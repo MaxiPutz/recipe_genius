@@ -40,27 +40,37 @@ String getGoogleTranlateKey() {
 ```
 6. Save the files and run the app.
 
+
 # API Integration
 This app uses three APIs to provide its core functionality:
 
 ## Edamam API
 The Edamam API is used to find recipes based on the ingredients provided by the user. This API provides a rich database of recipes, but it is primarily in English. To ensure that Recipe Genius can provide recipes in multiple languages, I have integrated the Google Translate API to translate the recipe instructions.
+https://developer.edamam.com/edamam-recipe-api
 
 ## Google Translate API
 The Google Translate API is used to translate the recipe instructions and ingredient names retrieved from the Edamam API to the language selected by the user. This integration ensures that the recipe instructions and ingredient names are available in a language that the user can understand.
+https://cloud.google.com/translate/docs/reference/rest
 
 ## Billa API
 The Billa API is used to find the products that are required to prepare the recipe. This API is primarily in German, so I first translate the ingredient names using the Google Translate API and then use the translated names to search for the products in the Billa API.
-
-To use these APIs, you will need to obtain API keys from the respective providers and store them in the edmamKey.dart and googleTranslateKey.dart files as shown in the installation instructions. Please note that you will need to have an active subscription to the Edamam and Billa APIs to use them in production.
+https://adminapi.vorbestellservice.billa.at/index.html
 
 ## Usage
-To use Recipe Genius, simply enter the ingredients you have on hand and select your preferred language. Recipe Genius will then search the Edamam database for recipes that use those ingredients and provide you with a list of results. You can select a recipe to see its instructions, which will be translated into the language you selected.
+1. Search for a recipe by entering keywords in the search bar and clicking the "Search" button.
+2. Browse the list of search results and select the recipe you want to view.
+3. On the recipe details page, scroll down to the "Ingredients" section to see the ingredients required for the recipe.
+4. Use the "Servings" field to adjust the serving size of the recipe as needed.
+5. Click the "Add to shopping list" button to add the recipe to your shopping list.
+6. Repeat steps 1-5 for all the recipes you want to cook.
+7. Go to the shopping list view to view all the ingredients you need to purchase.
+8. Select all articles  from the ingredients list. 
+9. Go to the ceckout fill in the ArticleId and press the send button.
 
 If you decide to prepare the recipe, Recipe Genius will use the translated ingredient names to search for the required products in the Billa API. You can then order the products directly from Billa to complete the recipe.
 
 ## License
 Recipe Genius is licensed under the MIT License. See LICENSE for more information.
 
-##Acknowledgments
+## Acknowledgments
 Recipe Genius was created by maxiputz. Special thanks to the creators of the Edamam, Google Translate, and Billa APIs for providing the data used by the app.
