@@ -14,7 +14,7 @@ To install the app, follow these steps:
 4. In the edmamKey.dart file, define your Edamam API ID and key as follows:
 
 ```dart
-Copy code
+
 class APIKey {
   late String appID;
   late String appKey;
@@ -36,7 +36,8 @@ In the googleTranslateKey.dart file, define your Google Translate API key as fol
 Copy code
 String getGoogleTranlateKey() {
   return "<your google translate key>";
-}```
+}
+```
 Save the files and run the app.
 
 # API Integration
