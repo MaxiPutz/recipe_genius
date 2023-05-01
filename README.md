@@ -30,10 +30,10 @@ class APIKey {
       };
 }
 ```
-In the googleTranslateKey.dart file, define your Google Translate API key as follows:
+5. In the googleTranslateKey.dart file, define your Google Translate API key as follows:
 
 ```dart
-Copy code
+
 String getGoogleTranlateKey() {
   return "<your google translate key>";
 }
