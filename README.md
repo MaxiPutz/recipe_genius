@@ -38,7 +38,7 @@ String getGoogleTranlateKey() {
   return "<your google translate key>";
 }
 ```
-Save the files and run the app.
+6. Save the files and run the app.
 
 # API Integration
 This app uses three APIs to provide its core functionality:
