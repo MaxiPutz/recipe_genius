@@ -4,15 +4,19 @@ import 'package:platform/platform.dart';
 import 'package:recipe_genius/bloc/BillaShoppingCart/BlocBillaShoppingCart.dart';
 import 'package:recipe_genius/bloc/BillaShoppingCart/event/EventBillaShoppingCart.dart';
 import 'package:recipe_genius/platform/platform.dart';
+import 'package:recipe_genius/view/RecepiUrlView.dart';
+import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 class QRCodeView extends StatelessWidget {
   TextEditingController nameTextController = TextEditingController();
+  late String _basektId;
 
   void sendToBilla(BuildContext context) async {
     print("nameTextController.text");
     print(nameTextController.text);
     print("nameTextController.text");
 
+    _basektId = nameTextController.text;
     var file = (await readFileBaskedId());
     file.writeAsStringSync(nameTextController.text);
     context.read<BlocBillaShoppingCart>().add(EventBillaShoppingCartSend());
@@ -45,8 +49,17 @@ class QRCodeView extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child:
-                  IconButton(onPressed: () {}, icon: const Icon(Icons.qr_code)),
+              child: IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => WebViewExample(
+                            url: "https://shop.billa.at/warenkorb",
+                          ),
+                        ));
+                  },
+                  icon: const Icon(Icons.qr_code)),
             ),
           ],
         ),

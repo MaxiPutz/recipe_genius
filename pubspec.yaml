@@ -41,6 +41,9 @@ dependencies:
   path_provider: ^2.0.14
   flutter_svg: ^2.0.5
   google_cloud_translation: ^0.0.3
+  url_launcher: ^6.1.10
+  webview_flutter: ^4.2.0
+  webview_flutter_wkwebview: ^3.4.2
 
 dev_dependencies:
   flutter_test:
