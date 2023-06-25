@@ -6,7 +6,7 @@ Future<io.Directory> appDocumentsDir() async =>
     await getApplicationDocumentsDirectory();
 
 Future<io.File> readFileTestJson() async {
-  if (io.Platform.isIOS || io.Platform.isLinux) {
+  if (io.Platform.isIOS || io.Platform.isLinux || io.Platform.isAndroid) {
     var dir = (await appDocumentsDir()).path;
 
     if (io.File("$dir/test.json").existsSync()) {
@@ -24,7 +24,7 @@ Future<io.File> readFileTestJson() async {
 }
 
 Future<io.File> readFileMenuPlanJson() async {
-  if (io.Platform.isIOS || io.Platform.isLinux) {
+  if (io.Platform.isIOS || io.Platform.isLinux || io.Platform.isAndroid) {
     var dir = (await appDocumentsDir()).path;
 
     if (io.File("$dir/MenuPlan.json").existsSync()) {
@@ -42,7 +42,7 @@ Future<io.File> readFileMenuPlanJson() async {
 }
 
 Future<io.File> readFileBaskedId() async {
-  if (io.Platform.isIOS || io.Platform.isLinux) {
+  if (io.Platform.isIOS || io.Platform.isLinux || io.Platform.isAndroid) {
     var dir = (await appDocumentsDir()).path;
 
     if (io.File("$dir/BaskedId.txt").existsSync()) {

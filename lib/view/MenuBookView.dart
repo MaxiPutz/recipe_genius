@@ -5,7 +5,7 @@ import 'package:recipe_genius/bloc/MenuPlan/event/eventMenuPlan.dart';
 import 'package:recipe_genius/bloc/MenuPlan/state/StateMenuPlan.dart';
 import 'package:recipe_genius/bloc/RecepieAPI/Response/Menu.dart';
 import 'package:recipe_genius/widget/Menu/MenuCard.dart';
-import 'package:recipe_genius/view/RecepiUrlView.dart';
+import 'package:recipe_genius/view/webview/RecepiUrlView.dart';
 
 class MenuBookView extends StatelessWidget {
   late BuildContext context;

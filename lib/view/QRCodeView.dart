@@ -4,7 +4,8 @@ import 'package:platform/platform.dart';
 import 'package:recipe_genius/bloc/BillaShoppingCart/BlocBillaShoppingCart.dart';
 import 'package:recipe_genius/bloc/BillaShoppingCart/event/EventBillaShoppingCart.dart';
 import 'package:recipe_genius/platform/platform.dart';
-import 'package:recipe_genius/view/RecepiUrlView.dart';
+import 'package:recipe_genius/view/webview/RecepiUrlView.dart';
+import 'package:recipe_genius/view/webview/WebViewBillaShoppingCart.dart';
 import 'package:webview_flutter_wkwebview/webview_flutter_wkwebview.dart';
 
 class QRCodeView extends StatelessWidget {
@@ -54,9 +55,10 @@ class QRCodeView extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => WebViewExample(
-                            url: "https://shop.billa.at/warenkorb",
-                          ),
+                          builder: (context) => WebViewBillaShoppingCart(),
+                          // builder: (context) => WebViewExample(
+                          //   url: "https://shop.billa.at/warenkorb",
+                          // ),
                         ));
                   },
                   icon: const Icon(Icons.qr_code)),
